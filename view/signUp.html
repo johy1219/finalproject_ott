@@ -1,0 +1,52 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    function signUp(){
+        var userId = $("#userid").val()
+        var password = $("#password").val()
+        var userName = $("#userName").val()
+        var userAge = $("#userAge").val()
+        var userSex = $("#userSex").val()
+        var userNum = $("#userNum").val()
+        var userEmail = $("#userEmail").val()
+        var ajax = $.ajax({
+            url: "/users",
+            data: (
+                {"id" : userId , "password" : password , "name" : userName,
+                "age" : userAge , "userSex" : userSex, "number" : userNum,
+                "email" : userEmail
+            }),
+            type: 'POST',
+            success: function (response) {
+                if(response.isSuccess == true) {
+                    alert("완료");
+                    location.replace('/test');
+                }
+                else {
+                    alert("실패");
+                    location.replace('/test');
+                }
+            }
+        });
+    }
+    function main(){
+        location.replace('/test');
+    }
+</script>
+<div style="width:420px;">
+    <div onclick="main();" id="login" style="text-align:right;">메인페이지 </div>
+    <hr>
+    <div>
+        <div>
+            <div>아이디 <input type="text" id="userid" name="userid" style="width:100%;"> </div>
+            <div>패스워드 <input type="password" id="password" name="password" style="width:100%;"> </div>
+            <div>사용자 이름 <input type="text" id="userName" name="userName" style="width:100%;"> </div>
+            <div>나이 <input type="text" id="userAge" name="userAge" style="width:100%;"> </div>
+            <div>성별 <input type="text" id="userSex" name="userSex" style="width:100%;"> </div>
+            <div>전화번호 <input type="text" id="userNum" name="userNum" style="width:100%;"> </div>
+            <div>이메일 <input type="text" id="userEmail" name="userEmail" style="width:100%;"> </div>
+        </div>
+        <div></div>
+    </div>
+    <div style="margin-top:8px;text-align:right;"> <input type="button" class="btnLogin" value="소셜로그인" onclick="location.replace('/kakao');" >
+        <input type="button" class="btnLogin" value="로그인" onclick="location.replace('/loginPage');" >
+    </div> <hr> <div style="text-align:center;"><input type="button" class="btnLogin" value="회원가입" onclick="signUp();" ></div> </div>
