@@ -8,10 +8,6 @@
     "dev": "NODE_ENV=development node index.js",
     "prod": "NODE_ENV=production node index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@gitlab.com:softsquared/template/api-server-node.git"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -26,5 +22,9 @@
     "regex-email": "^1.0.2",
     "winston": "^3.2.1",
     "winston-daily-rotate-file": "^4.2.1"
+  },
+  "scripts":{
+    "start": "node src",
+    "start:dev": "nodemon --watch index.js"
   }
 }
