@@ -3,9 +3,10 @@ module.exports = function(app){
     const jwtMiddleware = require('../../../config/jwtMiddleware');
     const path = require('path');
     const passport = require('passport');
-
+    const express = require('../../../config/express');
+    app.use(express.static('views'));
     // 0. 테스트 API
-    app.get('/test', user.getTest);
+    app.get('/test',user.getTest);
 
     app.get('/loginPage',user.loginPage);
 

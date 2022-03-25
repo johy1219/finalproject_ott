@@ -12,7 +12,7 @@ const {emit} = require("nodemon");
 
 // /** API No. 0 [GET]테스트 API **/
 exports.getTest = async function (req, res) {
-    return res.sendFile(path.join(__dirname,'../../../view/index.html'));
+    return res.sendFile(path.join(__dirname,'../../../view'));
 }
 
 // /** API No. 0 [GET]테스트 API **/
