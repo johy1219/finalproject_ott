@@ -5,27 +5,58 @@ const baseResponse = require("../../../config/baseResponseStatus");
 const {response, errResponse} = require("../../../config/response");
 const KakaoStrategy = require('passport-kakao').Strategy;
 const passport = require('passport');
+const axios = require('axios');
+const nodemailer = require('nodemailer');
+const smtpTransport = require('../../../config/mail');
 const path = require('path');
-
 const regexEmail = require("regex-email");
+const fs = require("fs");
 const {emit} = require("nodemon");
+var generateRandom = function (min, max) {
+    var ranNum = Math.floor(Math.random()*(max-min+1)) + min;
+    return ranNum;
+};
+let VarifiedCode;
 
 // /** API No. 0 [GET]테스트 API **/
 exports.getTest = async function (req, res) {
-    return res.sendFile(path.join(__dirname,'../../../view'));
+    return res.send(response(baseResponse.SUCCESS))
+};
+
+// 혜연
+exports.getIntro = async function (req, res) {
+    return res.sendFile(path.join(__dirname,'../../../view/intro_bg.png'));
 }
 
-// /** API No. 0 [GET]테스트 API **/
+exports.getSearch = async function (req, res) {
+    return res.sendFile(path.join(__dirname, '../../../view/search_icon.png'));
+}
+
+exports.getPointer = async function (req, res) {
+    return res.sendFile(path.join(__dirname, '../../../view/pointer_icon.png'));
+}
+
+// /** API No. 1 [GET] 메인 페이지 HTML API **/
+exports.getMain = async function (req, res) {
+    return res.sendFile(path.join(__dirname,'../../../view/index.html'));
+}
+
+// /** API No. 1-1 [GET] 메인 페이지 HTML API **/
+exports.getIcon = async function (req, res) {
+    return res.sendFile(path.join(__dirname,'../../../view/menu_icon.png'));
+}
+
+// /** API No. 2 [GET] 로그인 페이지 HTML **/
 exports.loginPage = async function (req, res) {
     return res.sendFile(path.join(__dirname,'../../../view/login.html'));
 }
 
-// /** API No. 0 [GET]테스트 API **/
+// /** API No. 3 [GET] 회원가입 페이지 HTML API **/
 exports.signUpPage = async function (req, res) {
     return res.sendFile(path.join(__dirname,'../../../view/signUp.html'));
 }
 
-/** API No. 1 [POST]유저 생성 (회원가입) API **/
+// /** API No. 4 [POST]유저 생성 (회원가입) API **/
 exports.postUsers = async function (req, res) {
 
     // /**Body: id, name, age, userSex, email, password, number **/
@@ -48,7 +79,7 @@ exports.postUsers = async function (req, res) {
     return res.send(signUpResponse);
 };
 
-/** API No. 2 [POST]유저 로그인 API **/
+// /** API No. 5 [POST]유저 로그인 API **/
 exports.login = async function (req, res) {
 
     const {userId, password} = req.body;
@@ -58,7 +89,7 @@ exports.login = async function (req, res) {
     return res.send(response(signInResponse));
 };
 
-/** API No. 3 [GET]소셜 로그인 API **/
+/** API No. 6 [GET]소셜 로그인 API **/
 exports.kakaoLogIn = async function (req,res)
 {
     const {accessToken} = req.body;
@@ -96,7 +127,6 @@ exports.kakaoLogIn = async function (req,res)
         return res.send(response(baseResponse.ACCESS_TOKEN_ERROR));
     }
 };
-
 passport.use('kakao-login', new KakaoStrategy({
         clientID: '5898d4ba2fdda040b411119996107a41',
         callbackURL: 'http://3.36.92.132:3000/auth/kakao/callback'},
@@ -111,3 +141,23 @@ exports.check = async function (req, res) {
     console.log(userIdResult);
     return res.send(response(baseResponse.TOKEN_VERIFICATION_SUCCESS));
 };
+
+exports.sendMail = async function (req,res)
+{
+    const number = generateRandom(111111,999999);
+    const emailOption = {
+        from : "인증이메일",
+        to : "elim0937@naver.com",
+        subject : "인증이메일",
+        text : "이메일 인증 번호 : " + number
+    };
+    await smtpTransport.sendMail(emailOption,(err,flag) =>
+    {
+        if(err){
+            return res.send(response(baseResponse.DB_ERROR))
+        }
+        else return number;
+    })
+    return number;
+}
+
