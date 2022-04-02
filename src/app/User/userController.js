@@ -36,6 +36,8 @@ exports.getPointer = async function (req, res) {
     return res.sendFile(path.join(__dirname, '../../../view/pointer_icon.png'));
 }
 
+//
+
 // /** API No. 1 [GET] 메인 페이지 HTML API **/
 exports.getMain = async function (req, res) {
     return res.sendFile(path.join(__dirname,'../../../view/index.html'));
@@ -49,6 +51,9 @@ exports.getIcon = async function (req, res) {
 // /** API No. 2 [GET] 로그인 페이지 HTML **/
 exports.loginPage = async function (req, res) {
     return res.sendFile(path.join(__dirname,'../../../view/login.html'));
+}
+exports.getLogin = async function (req, res) {
+    return res.sendFile(path.join(__dirname,'../../../view/login_icon.png'));
 }
 
 // /** API No. 3 [GET] 회원가입 페이지 HTML API **/

@@ -17,6 +17,7 @@ module.exports = function(app){
     app.get('/menuicon',user.getIcon);
 
     // 2. 로그인 페이지 HTML
+    app.get('/loginicon',user.getLogin);
     app.get('/loginPage',user.loginPage);
 
     // 3. 회원가입 페이지 HTML
