@@ -1,9 +1,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <script type="text/javascript">
     function login(){
-        var userId = $("#userid").val()
-        var password = $("#password").val()
-        var ajax = $.ajax({
+        let userId = $("#userid").val();
+        let password = $("#password").val();
+        let ajax = $.ajax({
         url: "/login",
             data: ({"userId" : userId , "password" : password}),
             type: 'POST',
@@ -23,16 +24,151 @@
         location.replace('/test');
     }
 </script>
-<div style="width:420px;">
-    <div onclick="main();" id="login" style="text-align:right;">메인페이지 </div>
-    <hr>
-    <div>
-        <div>
-            <div>아이디 <input type="text" id="userid" name="userid" style="width:100%;"> </div>
-            <div>패스워드 <input type="password" id="password" name="password" style="width:100%;"> </div>
+
+<style>
+    * {margin:0; padding:0; box-sizing: border-box;}
+    body{
+        font-family: 'Noto Sans KR', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: url("/intro");
+        background-size: cover;
+    }
+    /*body::before {*/
+    /*    content:"";*/
+    /*    position: absolute;*/
+    /*    z-index: 1;*/
+    /*    top:0; right: 0; bottom: 0; left: 0;*/
+    /*    background-color: rgba(0,0,0,.7);*/
+    /*}*/
+    .login-form{position: relative;}
+    .int-area
+    {
+        width: 400px;
+        position: relative;
+        margin-top: 10px;
+    }
+    .int-area:first-child
+    {
+        margin-top:0;
+    }
+    .int-area input
+    {
+        width: 100%;
+        padding: 20px 10px 10px;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #999;
+        font-size: 15px; color:#fff;
+        outline: none;
+    }
+    .int-area label
+    {
+        position: absolute; left: 10px; top: 15px;
+        font-size: 15px; color: #999;
+        transition: all .5s ease;
+    }
+
+    .int-area label.warning
+    {
+        color: red !important;
+        animation: warning .3s ease;
+        animation-iteration-count: 3;
+    }
+    @keyframes warning {
+        0% {transform: translateX(-2px);}
+        25% {transform: translateX(2px);}
+        50% {transform: translateX(-2px);}
+        75% {transform: translateX(2px);}
+    }
+
+    .int-area input:focus+label,
+    .int-area input:valid+label {
+        top:0;
+        font-size: 13px;
+        color: #166cea;
+    }
+    .btn-area{margin-top: 30px;}
+    .btn-area button
+    {
+        cursor: pointer;
+        width: 100%;
+        height: 50px;
+        background: #166cea;
+        color: #fff;
+        font-size: 15px;
+        /*font-weight: bold;*/
+        border:none;
+        border-radius: 25px;
+    }
+    .caption
+    {
+        margin-top: 20px;
+        text-align: center;
+    }
+    .caption a
+    {
+        font-size: 15px; color: #999;
+        text-decoration: none;
+    }
+    .btnLogin
+    {
+        cursor: pointer;
+        color: #fff;
+        text-align: right;
+    }
+</style>
+<body>
+<!--    <div class="EveryDay"><a href="#">Every Day</a></div>-->
+    <section class="login-form">
+        <form action="">
+            <div class="btnLogin" onclick="location.replace('/signUpPage');" >회원가입</div>
+            <div class="int-area">
+                <input type="text" id="userid" name="userid" autocomplete="off" required>
+                <label for="userid">ID</label></br>
+            </div>
+            <div class="int-area">
+                <input type="password" id="password" name="password" autocomplete="off" required>
+                <label for="password">PASSWORD</label></br>
+            </div>
+
+<!--            <div class="btn-area">-->
+<!--                <button type="submit" class="btnLogin" onclick="location.replace('/kakao');" >소셜로그인</button>-->
+<!--                <div class=""><img class="kakao_icon" src="/kakaoicon"></div>-->
+<!--                <a href=""><img class="search_icon" src="/searchicon"></a>-->
+<!--            </div>-->
+
+            <div class="btn-area">
+                <button type="submit" id="btn">LOGIN</button>
+            </div>
+        </form>
+        <div class="caption">
+            <a href="">Forgot Password?</a>
         </div>
-        <div></div>
-    </div>
-    <div style="margin-top:8px;text-align:right;"> <input type="button" class="btnLogin" value="소셜로그인" onclick="location.replace('/kakao');" >
-        <input type="button" class="btnLogin" value="회원가입" onclick="location.replace('/signUpPage');" >
-    </div> <hr> <div style="text-align:center;"><input type="button" class="btnLogin" value="로그인" onclick="login();" ></div> </div>
+    </section>
+    <script>
+        let id = $('#userid');
+        let pw = $('#password');
+        let btn = $('#btn');
+
+        $(btn).on('click', function(){
+            if($(id).val() === "")
+            {
+                $(id).next('label').addClass('warning');
+                setTimeout(function(){
+                    $('label').removeClass('warning');
+                },1500);
+            }
+            else if($(pw).val() === "")
+            {
+                $(pw).next('label').addClass('warning');
+                setTimeout(function(){
+                    $('label').removeClass('warning');
+                },1500);
+            }
+        });
+
+    </script>
+</body>
