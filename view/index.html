@@ -29,17 +29,17 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
-    /*.intro_bg*/
-    /*{*/
-    /*    width: 1920px;*/
-    /*    height: 1080px;*/
-    /*    !* margin:*/
-    /*    padding: 40px 0px 0px 40px; *!*/
-    /*    !* padding-up: 40px; *!*/
-    /*    background-image: url("/intro");*/
-    /*    background-repeat: no-repeat;*/
-    /*    background-size: cover;*/
-    /*}*/
+    .intro_bg
+    {
+        width: 1920px;
+        height: 1080px;
+        /* margin:
+        padding: 40px 0px 0px 40px; */
+        /* padding-up: 40px; */
+        /*background-image: url("/intro");*/
+        /*background-repeat: no-repeat;*/
+        /*background-size: cover;*/
+    }
 
     a
     {
@@ -141,12 +141,12 @@
         /*width: 1840px;*/
         height: 35px;
         line-height: 35px;
-        top:40px;
+        top:20px;
         left: 40px;
         right: 40px;
         /*margin: 40px 40px 0px 40px;*/
         background-color: red;
-        z-index:1;
+        /*z-index:2;*/
 
     }
     .nav-left
@@ -209,8 +209,12 @@
 
     .EveryDay
     {
+        display: flex;
+        justify-content: space-between;
+        /* align-items: center; */
         position: absolute;
         top: 40px;
+        /*z-index: 1;*/
 
     }
     .EveryDay a{
@@ -231,7 +235,7 @@
         text-align: center;
         text-decoration: none;
         color: #fff;
-        /*z-index:2;*/
+        /*z-index:1;*/
     }
 
     .main_text {
@@ -268,6 +272,89 @@
     .All_contents {
         position:absolute;
         cursor: pointer;
+        padding: 363px 40px 40px 0px;
+        left: 364px;
+        width: 221px;
+        height: 53px;
+        /*margin-top:987px;*/
+        /*margin-left:364px;*/
+        font-family: 'Roboto Light';
+        font-size: 40px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        -webkit-text-stroke: 1px #707070;
+    }
+    .Drama
+    {
+        position:absolute;
+        cursor: pointer;
+        padding: 363px 40px 40px 0px;
+        left: 647px;
+        width: 221px;
+        height: 53px;
+        /*margin-top:987px;*/
+        /*margin-left:364px;*/
+        font-family: 'Roboto Light';
+        font-size: 40px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        -webkit-text-stroke: 1px #707070;
+    }
+    .Entertainment
+     {
+        position:absolute;
+        cursor: pointer;
+        padding: 363px 40px 40px 0px;
+        left: 999px;
+        width: 221px;
+        height: 53px;
+        /*margin-top:987px;*/
+        /*margin-left:364px;*/
+        font-family: 'Roboto Light';
+        font-size: 40px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        -webkit-text-stroke: 1px #707070;
+    }
+    .Movie
+    {
+        position:absolute;
+        cursor: pointer;
+        padding: 363px 40px 40px 0px;
+        left: 827px;
+        width: 221px;
+        height: 53px;
+        /*margin-top:987px;*/
+        /*margin-left:364px;*/
+        font-family: 'Roboto Light';
+        font-size: 40px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        -webkit-text-stroke: 1px #707070;
+    }
+
+    .Documentary
+    {
+        position:absolute;
+        cursor: pointer;
+        padding: 363px 40px 40px 0px;
+        left: 1317px;
         width: 221px;
         height: 53px;
         /*margin-top:987px;*/
@@ -327,6 +414,10 @@
     {
         position: relative;
     }
+    .low-form
+    {
+        position: relative;
+    }
     .nav-right
     {
         width: 26px;
@@ -335,7 +426,14 @@
         display: flex;
     }
 
+    /*.low-menu*/
+    /*{*/
+    /*    position: relative;*/
+    /*    display: flex;*/
+
+    /*}*/
 </style>
+
 <div class="EveryDay"><a href="#">Every Day</a></div>
 <section class="main-form">
     <form action="">
@@ -356,7 +454,14 @@
 
 </section>
 
-<span class="All_contents">All Contents</span>
+
+<div class="low-menu">
+    <span class="All_contents">All Contents</span>
+    <span class="Drama">Drama</span>
+    <span class="Movie">Movie</span>
+    <span class="Entertainment">Entertainment</span>
+    <span class="Documentary">Documentary</span>
+</div>
 
 
 <nav class="header">
