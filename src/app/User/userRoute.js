@@ -8,6 +8,7 @@ module.exports = function(app){
     app.get('/test',user.getTest);
 
     // 혜연
+
     app.get('/intro',user.getIntro); // 배경이미지
     app.get('/searchicon',user.getSearch);
     app.get('/pointericon',user.getPointer);
@@ -19,9 +20,11 @@ module.exports = function(app){
     // 2. 로그인 페이지 HTML
     app.get('/loginicon',user.getLogin);
     app.get('/loginPage',user.loginPage);
+    app.get('/kakaoicon',user.getkakao);
 
     // 3. 회원가입 페이지 HTML
     app.get('/signUpPage',user.signUpPage);
+
 
     // 4. 회원가입 API
     app.post('/users', user.postUsers);

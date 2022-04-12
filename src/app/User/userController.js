@@ -24,6 +24,10 @@ exports.getTest = async function (req, res) {
 };
 
 // 혜연
+exports.getkakao = async function (req, res) {
+    return res.sendFile(path.join(__dirname,'../../../view/kakao_icon.png'));
+}
+
 exports.getIntro = async function (req, res) {
     return res.sendFile(path.join(__dirname,'../../../view/intro_bg.png'));
 }
