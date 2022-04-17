@@ -147,6 +147,7 @@
         position: relative;
         margin-top: 10px;
     }
+
     .int-area:first-child
     {
         margin-top:0;
@@ -167,6 +168,40 @@
         font-size: 15px; color: #999;
         transition: all .5s ease;
     }
+    /*.radio-area*/
+    /*{*/
+    /*    width: 400px;*/
+    /*    position: relative;*/
+    /*    margin-top: 10px;*/
+    /*}*/
+    /*.radio-area*/
+    /*{*/
+    /*    margin-top:0;*/
+    /*}*/
+    /*.radio-area label*/
+    /*{*/
+    /*    position: absolute; left: 10px; top: 20px;*/
+    /*    font-size: 13px; color: #999;*/
+    /*    transition: all .5s ease;*/
+    /*}*/
+    /*.radio-area label:first-child*/
+    /*{*/
+    /*    position: absolute; left: 10px; top: 15px;*/
+    /*    font-size: 15px; color: #999;*/
+    /*    transition: all .5s ease;*/
+    /*}*/
+    /*.radio-area lable:first-child.warning*/
+    /*{*/
+    /*    color: red !important;*/
+    /*    animation: warning .3s ease;*/
+    /*    animation-iteration-count: 3;*/
+    /*}*/
+    /*.radio-area label:focus+label:first-child,*/
+    /*.radio-area label:valid+label:first-child {*/
+    /*    top:0;*/
+    /*    font-size: 13px;*/
+    /*    color: #166cea;*/
+    /*}*/
 
     .int-area label.warning
     {
@@ -226,8 +261,18 @@
                 <label for="userAge">AGE</label></br>
             </div>
             <div class="int-area">
+<!--                <label>SEX</label></br>-->
+<!--                <label for="male">male</label>-->
+<!--                <input type="radio" id="male" name="userSex" value="Male" checked="checked">-->
+
+<!--                <label for="female">female</label>-->
+<!--                <input type="radio" id="female" name="userSex" value="Female">-->
+
+
                 <input type="text" id="userSex" name="userSex" autocomplete="off" required>
                 <label for="userSex">SEX</label></br>
+
+
             </div>
             <div class="int-area">
                 <input type="text" id="userNum" name="userNum" autocomplete="off" required>
