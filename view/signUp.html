@@ -11,19 +11,19 @@
         var ajax = $.ajax({
             url: "/users",
             data: (
-                {"id" : userId , "password" : password , "name" : userName,
-                "age" : userAge , "userSex" : userSex, "number" : userNum,
-                "email" : userEmail
+                {"userId" : userId , "password" : password , "userName" : userName,
+                "userAge" : userAge , "userSex" : userSex, "userNum" : userNum,
+                "userEmail" : userEmail
             }),
             type: 'POST',
             success: function (response) {
                 if(response.isSuccess == true) {
                     alert("완료");
-                    location.replace('/test');
+                    location.replace('/');
                 }
                 else {
                     alert("실패");
-                    location.replace('/test');
+                    location.replace('/');
                 }
             }
         });
@@ -162,12 +162,47 @@
         font-size: 15px; color:#fff;
         outline: none;
     }
+
     .int-area label
     {
         position: absolute; left: 10px; top: 15px;
         font-size: 15px; color: #999;
         transition: all .5s ease;
     }
+    .int-area2
+    {
+        width: 400px;
+        position: relative;
+        margin-top: 10px;
+    }
+    /*.int-area2 label:first-child*/
+    /*{*/
+    /*    position: absolute; left: 10px; top: 15px;*/
+    /*    font-size: 15px; color: #999;*/
+    /*    transition: all .5s ease;*/
+    /*}*/
+    #label_SEX
+    {
+        position: absolute; left: 10px; top: 15px;
+        font-size: 15px; color: #999;
+        transition: all .5s ease;
+    }
+    .gender
+    {
+        width: 100%;
+        padding: 20px 10px 10px;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #999;
+        font-size: 15px; color:#fff;
+        outline: none;
+    }
+    /*.int-area2 label*/
+    /*{*/
+    /*    position: absolute; left: 10px; top: 15px;*/
+    /*    font-size: 15px; color: #999;*/
+    /*    transition: all .5s ease;*/
+    /*}*/
     /*.radio-area*/
     /*{*/
     /*    width: 400px;*/
@@ -260,17 +295,20 @@
                 <input type="text" id="userAge" name="userAge" autocomplete="off" required>
                 <label for="userAge">AGE</label></br>
             </div>
-            <div class="int-area">
-<!--                <label>SEX</label></br>-->
-<!--                <label for="male">male</label>-->
-<!--                <input type="radio" id="male" name="userSex" value="Male" checked="checked">-->
+            <div class="int-area2">
 
-<!--                <label for="female">female</label>-->
-<!--                <input type="radio" id="female" name="userSex" value="Female">-->
+                <label id="label_SEX">SEX</label></br>
 
-
-                <input type="text" id="userSex" name="userSex" autocomplete="off" required>
-                <label for="userSex">SEX</label></br>
+                <div class="gender">
+                    <label for="click_male">Male</label>
+                    <input type="radio" id="click_male" name="gender" value="Male">
+                    <label for="click_female">Female</label>
+                    <input type="radio" id="click_female" name="gender" value="Female">
+                </div>
+<!--                <label for="click_male">Male</label>-->
+<!--                <input type="radio" id="click_male" name="gender" value="Male">-->
+<!--                <label for="click_female">Female</label>-->
+<!--                <input type="radio" id="click_female" name="gender" value="Female">-->
 
 
             </div>
@@ -284,7 +322,7 @@
             </div>
 
             <div class="btn-area">
-                <button type="submit" id="btn">SIGN UP</button>
+                <button type="submit" id="btn" onclick="signUp()">SIGN UP</button>
             </div>
         </form>
     </section>

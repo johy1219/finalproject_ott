@@ -69,20 +69,10 @@ exports.signUpPage = async function (req, res) {
 exports.postUsers = async function (req, res) {
 
     // /**Body: id, name, age, userSex, email, password, number **/
-    const {id, name, age, userSex, email, password, number} = req.body;
+    const {userId, userName, userAge, userSex, userEmail, password, userNum} = req.body;
 
-    // 빈 값 체크
-    if (!id)
-        return res.send(response(baseResponse.SIGNUP_EMAIL_EMPTY));
-    if (!name)
-        return res.send(response(baseResponse.SIGNUP_EMAIL_EMPTY));
-    //
-    // // 형식 체크 (by 정규표현식)
-    // if (!regexEmail.test(email))
-    //     return res.send(response(baseResponse.SIGNUP_EMAIL_ERROR_TYPE));
-    //
     const signUpResponse = await userService.createUser(
-        id, name, age, userSex, email, password, number
+        userId, userName, userAge, userSex, userEmail, password, userNum
     );
 
     return res.send(signUpResponse);
