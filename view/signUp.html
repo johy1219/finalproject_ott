@@ -25,16 +25,16 @@
             type: 'POST',
             dataType : 'JSON',
             success: function(response) {
+                    // alert("완료");
+                    // location.replace('/');
+                if(response.isSuccess == true) {
                     alert("완료");
-                    location.href('/');
-                // if(response.isSuccess == true) {
-                //     alert("완료");
-                //     location.href('/');
-                // }
-                // else {
-                //     alert("실패");
-                //     location.href('/');
-                // }
+                    location.replace('/');
+                }
+                else {
+                    alert("실패");
+                    // location.replace('/');
+                }
             }
         });
     }
@@ -274,10 +274,6 @@
             </div>
             <div class="int-area2">
 
-                <!--<label id="label_SEX">SEX</label></br>-->
-<!--                <label for="click_male">Male</label>-->
-
-
                 <label id="click_male_label" for="click_male">Male</label>
                 <input type="radio" id="click_male" name="userSex" value="Male"
                        onclick="signUp()" autocomplete="off" required checked>
@@ -287,22 +283,6 @@
                        onclick="signUp()" autocomplete="off" required>
 <!--                <div id="result"></div>-->
                 <label id="label_SEX">SEX</label></br>
-
-<!--                <input type="text" id="userSex" name="userSex" autocomplete="off" required>-->
-<!--                <label for="userSex">SEX</label></br>-->
-
-
-<!--                <div id="gender">-->
-<!--                    <label for="click_male">Male</label>-->
-<!--                    <input type="radio" id="click_male" name="gender" value="Male">-->
-<!--                    <label for="click_female">Female</label>-->
-<!--                    <input type="radio" id="click_female" name="gender" value="Female">-->
-<!--                </div>-->
-<!--                <label for="click_male">Male</label>-->
-<!--                <input type="radio" id="click_male" name="gender" value="Male">-->
-<!--                <label for="click_female">Female</label>-->
-<!--                <input type="radio" id="click_female" name="gender" value="Female">-->
-
 
             </div>
             <div class="int-area">
