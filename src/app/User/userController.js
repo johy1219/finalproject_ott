@@ -82,9 +82,10 @@ exports.postUsers = async function (req, res) {
 exports.login = async function (req, res) {
 
     const {userId, password} = req.body;
+    console.log(userId,password)
 
     const signInResponse = await userService.postSignIn(userId, password);
-
+    console.log(signInResponse)
     return res.send(response(signInResponse));
 };
 
@@ -120,7 +121,8 @@ exports.kakaoLogIn = async function (req,res)
         //         number
         //     );
         //     const signInResponse = await userService.postSignIn(email, password);
-            return res.send(response(baseResponse.SUCCESS));
+        // return res.send(response(baseResponse.SUCCESS));
+        return res.sendFile(path.join(__dirname,'../../../view/index.html'));
     }
     catch (err){
         return res.send(response(baseResponse.ACCESS_TOKEN_ERROR));

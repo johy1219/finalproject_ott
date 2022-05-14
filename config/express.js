@@ -18,7 +18,7 @@ module.exports = function () {
     app.use(express.static(process.cwd() + '/static'));
 
     require('../src/app/User/userRoute')(app);
-    // require('../src/app/Board/boardRoute')(app);
+    require('../src/app/Content/contentRoute')(app);
 
     return app;
 };

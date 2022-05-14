@@ -32,6 +32,8 @@ module.exports = function(app){
     // 5. 로그인 하기 API (JWT 생성)
     app.post('/login', user.login);
 
+    // app.post('/interests',user.postInterest);
+
     // 6. 카카오 로그인 API
     app.post('/kakao-login',user.kakaoLogIn);
     app.get('/kakao', passport.authenticate('kakao-login'));
