@@ -1,55 +1,47 @@
-// userId 회원 조회
-async function selectUserId(connection, userId) {
-  const selectUserIdQuery = `
-                 SELECT userId
-                 FROM User
-                 WHERE userId = ?;
+// 전체 컨텐츠 리스트 조회
+async function selectContentAll(connection) {
+  const selectContentAllQuery = `
+                 SELECT *
+                 FROM Content;
                  `;
-  const [userRow] = await connection.query(selectUserIdQuery, userId);
-  return userRow;
+  const [contentRow] = await connection.query(selectContentAllQuery);
+  return contentRow;
 }
 
-// 유저 생성
-async function insertUserInfo(connection, insertUserInfoParams) {
-  const insertUserInfoQuery = `
-        INSERT INTO User(userId, userName, userAge, userSex, userEmail, password, userNum)
-        VALUES (?, ?, ?, ?, ?, ?, ?);
-    `;
-  const insertUserInfoRow = await connection.query(
-    insertUserInfoQuery,
-    insertUserInfoParams
-  );
-
-  return insertUserInfoRow;
+// 태그 아이디 조회(컨텐츠 필터링 전처리)
+async function selectTagId(connection,tag) {
+  const selectTagQuery = `
+                 SELECT id
+                 FROM Interest
+                 WHERE name=?
+                 `;
+  const [contentRow] = await connection.query(selectTagQuery,tag);
+  return contentRow;
 }
 
-// 패스워드 체크
-async function selectUserPassword(connection, selectUserPasswordParams) {
-  const selectUserPasswordQuery = `
-        SELECT userId, password, status
-        FROM User 
-        WHERE userId = ? AND password = ?;`;
-  const selectUserPasswordRow = await connection.query(
-      selectUserPasswordQuery,
-      selectUserPasswordParams
-  );
-
-  return selectUserPasswordRow;
+// 컨텐츠-태그 조회
+async function selectContentByTag(connection,tagId) {
+  const selectContentTagQuery = `
+                 SELECT *
+                 FROM Content
+                 `;
+  const [contentRow] = await connection.query(selectContentTagQuery,tagId);
+  return contentRow;
 }
 
-async function updateUserInfo(connection, id, nickname) {
-  const updateUserQuery = `
-  UPDATE UserInfo 
-  SET nickname = ?
-  WHERE id = ?;`;
-  const updateUserRow = await connection.query(updateUserQuery, [nickname, id]);
-  return updateUserRow[0];
+// 유저 관심사 추가
+async function insertUserInterest(connection,insertInfo) {
+    const insertUserInterestQuery = `
+        INSERT INTO UserInterest(userId,interestId) 
+        VALUES (?,?);
+                 `;
+    const [InsertRow] = await connection.query(insertUserInterestQuery,insertInfo);
+    return InsertRow;
 }
-
-
 module.exports = {
-  selectUserId,
-  insertUserInfo,
-  selectUserPassword,
-  updateUserInfo
+  selectContentAll,
+  selectTagId,
+  selectContentByTag,
+  insertUserInterest
+
 };

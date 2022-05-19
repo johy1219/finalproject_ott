@@ -3,7 +3,6 @@ module.exports = function(app){
     const jwtMiddleware = require('../../../config/jwtMiddleware');
     const path = require('path');
     const passport = require('passport');
-
     // 0. 테스트 API
     app.get('/test',user.getTest);
 
@@ -11,6 +10,7 @@ module.exports = function(app){
 
     app.get('/intro',user.getIntro); // 배경이미지
     app.get('/searchicon',user.getSearch);
+    app.get('/searchPage',user.searchPage);
     app.get('/pointericon',user.getPointer);
 
     // 1. 메인 API
@@ -32,17 +32,22 @@ module.exports = function(app){
     // 5. 로그인 하기 API (JWT 생성)
     app.post('/login', user.login);
 
-    // app.post('/interests',user.postInterest);
+    app.post('/interests');
+
+    app.get('/exampleImage',user.getExample);
+    app.get('/exampleImage2',user.getExample2);
+    app.get('/exampleImage3',user.getExample3);
 
     // 6. 카카오 로그인 API
     app.post('/kakao-login',user.kakaoLogIn);
     app.get('/kakao', passport.authenticate('kakao-login'));
-    app.get('/auth/kakao/callback', passport.authenticate('kakao-login', {
-        successRedirect: '/',
+    app.get('/kakao/oauth', passport.authenticate('kakao-login', {
         failureRedirect : '/',
     }), (req, res) => {
-        res.redirect('/')
+        res.redirect('/');
     });
+
+
 
     //JWT 검증 API
     app.get('/auto-login', jwtMiddleware, user.check);

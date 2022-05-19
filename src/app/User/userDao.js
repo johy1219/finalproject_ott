@@ -9,6 +9,17 @@ async function selectUserId(connection, userId) {
   return userRow;
 }
 
+// userId 조회
+async function selectUser(connection, userId) {
+  const selectUserIdQuery = `
+                 SELECT id
+                 FROM User
+                 WHERE userId = ?;
+                 `;
+  const [userRow] = await connection.query(selectUserIdQuery, userId);
+  return userRow;
+}
+
 // 유저 생성
 async function insertUserInfo(connection, insertUserInfoParams) {
   const insertUserInfoQuery = `
@@ -51,5 +62,6 @@ module.exports = {
   selectUserId,
   insertUserInfo,
   selectUserPassword,
-  updateUserInfo
+  updateUserInfo,
+  selectUser
 };

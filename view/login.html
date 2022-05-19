@@ -1,15 +1,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <script type="text/javascript">
+    let jwt =""
+    let userId = ""
     function login() {
-        let userId = $("#userid").val();
+        let user = $("#userid").val();
         let password = $("#password").val();
         var ajax = $.ajax({
             url: "/login",
-            data: ({"userId" : userId , "password" : password}),
+            data: ({"userId" : user , "password" : password}),
             type: 'POST',
             success: function (result) {
                 if(result.code == 1000) {
+                    // alert('성공')
+                    jwt = result.result['jwt']
+                    check()
                     location.replace('/');
                 }
                 else if(result.code == 4000) {
@@ -19,8 +24,38 @@
             }
         });
     }
+    function check() {
+        var ajax = $.ajax({
+            url: "/auto-login",
+            type: 'GET',
+            headers: {
+                "x-access-token":  jwt
+            },
+            success: function (result) {
+                if(result.code == 1001) {
+                    var sessionData = result.result;
+                    sessionStorage.setItem("userId", sessionData )
+                }
+                else if (result.code == 4000){
+
+                }
+            }
+        });
+    }
+
+    function kakao() {
+        var ajax = $.ajax({
+            url: "/kakao",
+            type: 'GET',
+            success: function (result) {
+                alert(result.accessToken)
+            }
+        });
+        alert("ok");
+    }
+
     function main(){
-        location.replace('/test');
+        location.replace('/');
     }
     let id = $('#userid');
     let pw = $('#password');
@@ -197,7 +232,7 @@
         left: 40px;
         right: 40px;
         /*margin: 40px 40px 0px 40px;*/
-        background-color: red;
+        /*background-color: red;*/
         /*z-index:2;*/
 
     }
@@ -239,12 +274,11 @@
     }
 </style>
 <body>
-<div class="EveryDay"><a href="#">Every Day</a></div>
+<div class="EveryDay"><a href="/">Every Day</a></div>
 <nav class="header">
     <ul class="nav-left">
         <li><a href=""><img class="menu_icon" src="/menuicon"></a></li>
         <li><a href=""><span class="Menu">Menu</span></a></li>
-
         <!-- <button onclick="location.href='/loginPage'">로그인</button> -->
     </ul>
 </nav>
@@ -261,7 +295,7 @@
         </div>
 
         <div>
-            <a href="/kakao"><img class="kakao_icon" src="/kakaoicon"></a>
+            <a><img class="kakao_icon" onclick="kakao()" src="/kakaoicon"></a>
         </div>
 
         <div class="btn-area">

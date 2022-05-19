@@ -1,5 +1,6 @@
 const jwtMiddleware = require("../../../config/jwtMiddleware");
 const userProvider = require("../../app/User/userProvider");
+const userController = require("../../app/User/userController");
 const userService = require("../../app/User/userService");
 const baseResponse = require("../../../config/baseResponseStatus");
 const {response, errResponse} = require("../../../config/response");
@@ -12,6 +13,9 @@ const path = require('path');
 const regexEmail = require("regex-email");
 const fs = require("fs");
 const {emit} = require("nodemon");
+
+const session = require('express-session');
+// const MemoryStore = require('memorystore')(session);
 var generateRandom = function (min, max) {
     var ranNum = Math.floor(Math.random()*(max-min+1)) + min;
     return ranNum;
@@ -40,6 +44,10 @@ exports.getPointer = async function (req, res) {
     return res.sendFile(path.join(__dirname, '../../../view/pointer_icon.png'));
 }
 
+exports.getPointer = async function (req, res) {
+    return res.sendFile(path.join(__dirname, '../../../view/pointer_icon.png'));
+}
+
 //
 
 // /** API No. 1 [GET] 메인 페이지 HTML API **/
@@ -56,6 +64,7 @@ exports.getIcon = async function (req, res) {
 exports.loginPage = async function (req, res) {
     return res.sendFile(path.join(__dirname,'../../../view/login.html'));
 }
+
 exports.getLogin = async function (req, res) {
     return res.sendFile(path.join(__dirname,'../../../view/login_icon.png'));
 }
@@ -82,12 +91,27 @@ exports.postUsers = async function (req, res) {
 exports.login = async function (req, res) {
 
     const {userId, password} = req.body;
-    console.log(userId,password)
 
     const signInResponse = await userService.postSignIn(userId, password);
     console.log(signInResponse)
-    return res.send(response(signInResponse));
+
+    return res.send(signInResponse);
 };
+
+exports.searchPage = async function (req, res) {
+    return res.sendFile(path.join(__dirname,'../../../view/searchService.html'));
+}
+
+exports.getExample = async function (req, res) {
+    return res.sendFile(path.join(__dirname,'../../../view/exmpleImage.jpg'));
+}
+exports.getExample2 = async function (req, res) {
+    return res.sendFile(path.join(__dirname,'../../../view/exmpleImage2.jpg'));
+}
+exports.getExample3 = async function (req, res) {
+    return res.sendFile(path.join(__dirname,'../../../view/exmpleImage3.jpg'));
+}
+
 
 /** API No. 6 [GET]소셜 로그인 API **/
 exports.kakaoLogIn = async function (req,res)
@@ -121,8 +145,7 @@ exports.kakaoLogIn = async function (req,res)
         //         number
         //     );
         //     const signInResponse = await userService.postSignIn(email, password);
-        // return res.send(response(baseResponse.SUCCESS));
-        return res.sendFile(path.join(__dirname,'../../../view/index.html'));
+        return res.send(response(baseResponse.SUCCESS));
     }
     catch (err){
         return res.send(response(baseResponse.ACCESS_TOKEN_ERROR));
@@ -130,7 +153,7 @@ exports.kakaoLogIn = async function (req,res)
 };
 passport.use('kakao-login', new KakaoStrategy({
         clientID: '5898d4ba2fdda040b411119996107a41',
-        callbackURL: 'http://3.36.92.132:3000/auth/kakao/callback'},
+        callbackURL: 'http://3.36.92.132:3000/kakao/oauth'},
     async (accessToken, refreshToken, profile, done) =>
     {
         console.log(accessToken);
@@ -139,8 +162,7 @@ passport.use('kakao-login', new KakaoStrategy({
 /** JWT 토큰 검증 API[GET] /auto-login **/
 exports.check = async function (req, res) {
     const userIdResult = req.verifiedToken.userId;
-    console.log(userIdResult);
-    return res.send(response(baseResponse.TOKEN_VERIFICATION_SUCCESS));
+    return res.send(response(baseResponse.TOKEN_VERIFICATION_SUCCESS,userIdResult));
 };
 
 exports.sendMail = async function (req,res)

@@ -31,9 +31,15 @@
         align-items: center;
         height: 100vh;
         background-image: url("/intro");
-        background-repeat: no-repeat;
+        background-repeat: repeat;
         background-size: cover;
     }
+    /* .blackrec{
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: white;
+    } */
     .intro_bg
     {
         width: 1920px;
@@ -110,25 +116,6 @@
         color: #7b7b7b;
     }
 
-    .UNAME {
-        cursor: pointer;
-        width: 100%;
-        height: 36px;
-        /*margin-right: 34px;*/
-        position: absolute;
-        right: 60px;
-        /*margin: 6px 34px 0px 0px;*/
-        font-family: 'Roboto Light';
-        font-size: 20px;
-        font-weight: normal;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.3;
-        letter-spacing: normal;
-        /*text-align: left;*/
-        color: #7b7b7b;
-    }
-
     .login_icon {
         position: absolute;
         width: 100%;
@@ -187,9 +174,12 @@
     .searchArea
     {
         position: absolute;
-        /*text-align: center;*/
+        /* justify-content: space-between; */
+        /* text-align: center; */
         width: 446px;
-        left: 25px;
+        left: 50%;
+        bottom: 300px;
+        transform: translateX(-50%);
         height: 52px;
         /* margin: 44px 137px 29px 149px; */
         /* padding: 20px 21.7px 18px 41px; */
@@ -203,7 +193,7 @@
         /*display: flex;*/
         /*justify-content: space-between;*/
         cursor: pointer;
-        position:absolute;
+        position: absolute;
         width: 24px;
         height: 24px;
         margin-top: 15px;
@@ -212,6 +202,7 @@
     .searchArea form input
     {
         border:None;
+        /* position: absolute;  */
         width: 300px;
         height: 30px;
         left: 10px;
@@ -263,187 +254,19 @@
         /*z-index:1;*/
     }
 
-    .main_text {
-        position: absolute;
-        bottom: 50px;
-        font-family: 'Noto Sans KR', sans-serif;
-        font-size: 36px;
-        font-weight: bold;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.35;
-        letter-spacing: normal;
-        width: 100%;
-        text-align: center;
-        color: #fff;
-    }
 
-    .sub_text {
-        position:absolute;
-        width: 100%;
-        height: 20px;
-        bottom: 20px;
-        font-family: 'Noto Sans KR';
-        font-size: 15px;
-        font-weight: normal;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.33;
-        letter-spacing: normal;
-        text-align: center;
-        color: #fff;
-    }
-
-    .All_contents {
-        position:absolute;
-        cursor: pointer;
-        /*padding: 363px 40px 40px 0px;*/
-        left: 364px;
-        bottom: 40px;
-        right: 40px;
-        width: 221px;
-        height: 53px;
-        /*margin-top:987px;*/
-        /*margin-left:364px;*/
-        font-family: 'Roboto Light';
-        font-size: 40px;
-        font-weight: bold;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.33;
-        letter-spacing: normal;
-        text-align: left;
-        -webkit-text-stroke: 1px #707070;
-    }
-    .Drama
-    {
-        position:absolute;
-        cursor: pointer;
-        bottom: 40px;
-        right: 40px;
-        left: 647px;
-        width: 221px;
-        height: 53px;
-        /*margin-top:987px;*/
-        /*margin-left:364px;*/
-        font-family: 'Roboto Light';
-        font-size: 40px;
-        font-weight: bold;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.33;
-        letter-spacing: normal;
-        text-align: left;
-        -webkit-text-stroke: 1px #707070;
-    }
-    .Entertainment
-    {
-        position:absolute;
-        cursor: pointer;
-        bottom: 40px;
-        right: 40px;
-        left: 999px;
-        width: 221px;
-        height: 53px;
-        /*margin-top:987px;*/
-        /*margin-left:364px;*/
-        font-family: 'Roboto Light';
-        font-size: 40px;
-        font-weight: bold;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.33;
-        letter-spacing: normal;
-        text-align: left;
-        -webkit-text-stroke: 1px #707070;
-    }
-    .Movie
-    {
-        position:absolute;
-        cursor: pointer;
-        bottom: 40px;
-        right: 40px;
-        left: 827px;
-        width: 221px;
-        height: 53px;
-        /*margin-top:987px;*/
-        /*margin-left:364px;*/
-        font-family: 'Roboto Light';
-        font-size: 40px;
-        font-weight: bold;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.33;
-        letter-spacing: normal;
-        text-align: left;
-        -webkit-text-stroke: 1px #707070;
-    }
-
-    .Documentary
-    {
-        position:absolute;
-        cursor: pointer;
-        bottom: 40px;
-        right: 40px;
-        left: 1317px;
-        width: 221px;
-        height: 53px;
-        /*margin-top:987px;*/
-        /*margin-left:364px;*/
-        font-family: 'Roboto Light';
-        font-size: 40px;
-        font-weight: bold;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.33;
-        letter-spacing: normal;
-        text-align: left;
-        -webkit-text-stroke: 1px #707070;
-    }
-
-    .All_contents:hover {
-        /* position:absolute;
-        width: 221px;
-        height: 53px;
-        margin-top:987px;
-        margin-left:364px;
-        font-family: 'Roboto Light';
-        font-size: 40px;
-        font-weight: bold;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.33;
-        letter-spacing: normal;
-        text-align: left; */
-        color: #fff;
-        -webkit-text-stroke-width: 0px;
-
-    }
     .Area2
     {
         width: 80px;
         position: relative;
     }
-    .view_more
-    {
-        position: absolute;
-        cursor: pointer;
-        top: 90px;
-        width: 100%;
-        height: 20px;
-        font-family: 'Noto Sans KR';
-        font-size: 15px;
-        font-weight: normal;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.33;
-        letter-spacing: normal;
-        text-align: center;
-        color: #fff;
-    }
+
     .main-form
     {
         position: relative;
+        display: flex;
+        /* display: flex;
+        justify-content: center; */
     }
     .low-form
     {
@@ -456,45 +279,104 @@
         list-style: none;
         display: flex;
     }
+    .search-view
+    {
+        width: 1400px;
+        /*height: 1000px;*/
+        top: 300px;
+        /*background: black;*/
+        position: absolute;
 
-    /*.low-menu*/
-    /*{*/
-    /*    position: relative;*/
-    /*    display: flex;*/
+        /*margin-top: 5px;*/
+        text-align: left;
+    }
+    .search-content
+    {
+        margin-top: 20px;
+        text-align: center;
+        line-height: 150px;
+        /* width: 100%; */
+        height: 150px;
+        /* overflow: auto; */
+        /* padding: 20px 10px 10px; */
+        background-color: transparent;
+        border: none;
+        /* border-bottom: 1px solid #999; */
+        font-size: 15px; color:#fff;
+        outline: none;
+    }
 
-    /*}*/
+    .content_img
+    {
+        /*width: 150px;*/
+        height: 150px;
+        padding-right: 20px;
+        border-right: 1px solid #999;
+        float: left;
+        color: #fff;
+    }
+    .content_name
+    {
+        width: 200px;
+        height: 150px;
+
+        border-right: 1px solid #999;
+        float: left;
+        color: #fff;
+    }
+    .content_platform
+    {
+        width: 200px;
+        height: 150px;
+
+        border-right: 1px solid #999;
+        float: left;
+        color: #fff;
+    }
+    .content_actor
+    {
+        /* display: inline-block;
+        vertical-align: middle;
+        line-height: normal; */
+        width: 200px;
+        height: 150px;
+
+
+        border-right: 1px solid #999;
+        float: left;
+        color: #fff;
+    }
+    /* .content_actor label
+    {
+      height: 150px;
+      vertical-align: middle;
+      line-height: 150px;
+    } */
+    .content_story
+    {
+        width: 600px;
+        height: 150px;
+        padding-left: 10px;
+        padding-right: 10px;
+        float: left;
+        text-align: left;
+    }
+    .my-hr
+    {
+        border: 0px;
+        height: 1px;
+        background: #999;
+    }
+    .search-total
+    {
+        font-size: 18px; color:#fff;
+
+    }
+
 </style>
 
+<div class= "blackrec"></div>
 <div class="EveryDay"><a href="/">Every Day</a></div>
-<section class="main-form">
-    <form action="">
-        <div class="intro_text">
-            <span class="main_text">매일 삶속에서 콘텐츠를 누리다</span>
-            <span class="sub_text">원하는 가격으로 원하는 콘텐츠를 감상하세요</span>
-        </div>
-
-        <span class="view_more">View more</span>
-        <a href=""><img class="pointer_icon" src="/pointericon"></a>
-    </form>
-    <div class="searchArea">
-        <form>
-            <input type="search" placeholder="콘텐츠를 지금 바로 검색하세요.">
-            <a href="/searchPage"><img class="search_icon" src="/searchicon"></a>
-        </form>
-    </div>
-
-</section>
-
-
-<div class="low-menu">
-    <span class="All_contents">All Contents</span>
-    <span class="Drama">Drama</span>
-    <span class="Movie">Movie</span>
-    <span class="Entertainment">Entertainment</span>
-    <span class="Documentary">Documentary</span>
-</div>
-
-
 <nav class="header">
     <ul class="nav-left">
         <li><a href=""><img class="menu_icon" src="/menuicon"></a></li>
@@ -506,14 +388,75 @@
         <li><a href=""><span class="KR">KR</span></a></li>
         <li><a href=""><span class="EN">EN</span></a></li>
         <li><a href="/loginPage"><img class="login_icon" src="/loginicon"></a></li>
-        <li><a href=""><span class="UNAME">KR님 로그인</span></a></li>
     </ul>
 </nav>
+
+<section class="main-form">
+    <div class="searchArea">
+        <form>
+            <input type="search" placeholder="콘텐츠를 지금 바로 검색하세요.">
+            <a href=""><img class="search_icon" src="/searchicon"></a>
+        </form>
+    </div>
+</section>
+
+<section class="search-view">
+    <span class="search-total">검색 결과 &&건</span>
+    <div class="search-content">
+        <ul>
+            <li><a href=""><img class="content_img" src="/exampleImage"></a></li>
+            <li><a href=""><div class="content_name"><label>범인은 바로 너</label></div></a></li>
+            <li><a href=""><div class="content_platform"><label>넷플릭스</label></div></a></li>
+            <li><a href=""><div class="content_actor"><label>유재석, 박민영, 오세훈</label></div></a></li>
+            <li><a href=""><div class="content_story"><label>갑자기 세상을 떠난 화가 그런데 이번엔 경쟁자가 있다? </label></div></a></li>
+        </ul>
+    </div>
+    <br>
+    <hr class="my-hr">
+    <br>
+
+    <div class="search-content">
+        <ul>
+            <li><a href=""><img class="content_img" src="/exampleImage3"></a></li>
+            <li><a href=""><div class="content_name"><label>범인은 바로 너</label></div></a></li>
+            <li><a href=""><div class="content_platform"><label>넷플릭스</label></div></a></li>
+            <li><a href=""><div class="content_actor"><label>김세정</label></div></a></li>
+            <li><a href=""><div class="content_story"><label>갑자기 세상을 떠난 화가, 그녀가 남긴 자화상을 찾아라! </label></div></a></li>
+        </ul>
+    </div>
+    <br>
+    <hr class="my-hr">
+    <br>
+
+    <div class="search-content">
+        <ul>
+            <li><a href=""><img class="content_img" src="/exampleImage"></a></li>
+            <li><a href=""><div class="content_name"><label>범인은 바로 너</label></div></a></li>
+            <li><a href=""><div class="content_platform"><label>넷플릭스</label></div></a></li>
+            <li><a href=""><div class="content_actor"><label>김종민, 이광수</label></div></a></li>
+            <li><a href=""><div class="content_story"><label>그런데 이번엔 경쟁자가 있다? 탐정단 앞에 나타난 진짜 천재 탐정단. </label></div></a></li>
+        </ul>
+    </div>
+    <br>
+    <hr class="my-hr">
+    <br>
+
+    <div class="search-content">
+        <ul>
+            <li><a href=""><img class="content_img" src="/exampleImage2"></a></li>
+            <li><a href=""><div class="content_name"><label>범인은 바로 너</label></div></a></li>
+            <li><a href=""><div class="content_platform"><label>넷플릭스</label></div></a></li>
+            <li><a href=""><div class="content_actor"><label>유재석, 박민영, 오세훈, 김세정</label></div></a></li>
+            <li><a href=""><div class="content_story"><label>그런데 이번엔 경쟁자가 있다? 탐정단 앞에 나타난 진짜 천재 참정단. </label></div></a></li>
+        </ul>
+    </div>
+    <br>
+    <hr class="my-hr">
+    <br>
+
+</section>
+
+
+
 </body>
 </html>
-<script type="text/javascript">
-    function userIdSet() {
-        userId = sessionStorage.getItem("userId")
-        alert(userId)
-    }
-</script>
