@@ -15,9 +15,9 @@
             type: 'POST',
             success: function (result) {
                 if(result.code == 1000) {
-                    // alert('성공')
-                    jwt = result.result['jwt']
-                    check()
+                    alert('성공');
+                    jwt = result.result['jwt'];
+                    check();
                     alert(user+"님 환영합니다.");
                     location.replace('/');
                     myModule.hello();

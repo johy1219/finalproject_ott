@@ -157,6 +157,7 @@ passport.use('kakao-login', new KakaoStrategy({
     async (accessToken, refreshToken, profile, done) =>
     {
         console.log(accessToken);
+        userController.getMain();
     }));
 
 /** JWT 토큰 검증 API[GET] /auto-login **/
