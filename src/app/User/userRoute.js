@@ -50,7 +50,7 @@ module.exports = function(app){
 
 
     //JWT 검증 API
-    app.get('/auto-login', jwtMiddleware, user.check);
+    app.get('/auto', jwtMiddleware, user.check);
 
 };
 

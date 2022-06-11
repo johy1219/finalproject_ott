@@ -14,8 +14,6 @@ const regexEmail = require("regex-email");
 const fs = require("fs");
 const {emit} = require("nodemon");
 
-const session = require('express-session');
-// const MemoryStore = require('memorystore')(session);
 var generateRandom = function (min, max) {
     var ranNum = Math.floor(Math.random()*(max-min+1)) + min;
     return ranNum;
@@ -89,12 +87,11 @@ exports.postUsers = async function (req, res) {
 
 // /** API No. 5 [POST]유저 로그인 API **/
 exports.login = async function (req, res) {
-
     const {userId, password} = req.body;
-
     const signInResponse = await userService.postSignIn(userId, password);
-    console.log(signInResponse)
-
+    if(signInResponse.code == 1000){
+        res.cookie('jwt',signInResponse.result['jwt'])
+    }
     return res.send(signInResponse);
 };
 
@@ -156,14 +153,14 @@ passport.use('kakao-login', new KakaoStrategy({
         callbackURL: 'http://3.36.92.132:3000/kakao/oauth'},
     async (accessToken, refreshToken, profile, done) =>
     {
+        res.cookie("AC",accessToken);
         console.log(accessToken);
-        userController.getMain();
     }));
 
 /** JWT 토큰 검증 API[GET] /auto-login **/
 exports.check = async function (req, res) {
     const userIdResult = req.verifiedToken.userId;
-    return res.send(response(baseResponse.TOKEN_VERIFICATION_SUCCESS,userIdResult));
+    return res.send(response(baseResponse.TOKEN_VERIFICATION_SUCCESS,userIdResult))
 };
 
 exports.sendMail = async function (req,res)

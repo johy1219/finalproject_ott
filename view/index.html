@@ -18,10 +18,10 @@
         // }
         // exports.login_success = login_success();
         module.exports = {
-                hello: function() {
-                    document.getElementsByClassName("test1").innerHTML = "hello";
-                    alert("Dsfifjdsijfidididididididididi");
-                }
+            hello: function() {
+                document.getElementsByClassName("test1").innerHTML = "hello";
+                alert("Dsfifjdsijfidididididididididi");
+            }
         }
     </script>
 </head>
@@ -213,6 +213,10 @@
         border-radius: 48px;
         background-color: #fff;
     }
+    .searchArea:active
+    {
+        background-color: #166cea;
+    }
     .search_icon
     {
         /*display: flex;*/
@@ -232,9 +236,13 @@
         left: 10px;
         margin-left: 30px;
         margin-top:13px;
+        outline:none;
 
     }
-
+    .searchArea form input:active
+    {
+        background-color: #166cea;
+    }
     /*.searchArea form img*/
     /*{*/
     /*    */
@@ -357,7 +365,7 @@
         cursor: pointer;
         bottom: 40px;
         right: 40px;
-        left: 999px;
+        left: 1099px;
         width: 221px;
         height: 53px;
         /*margin-top:987px;*/
@@ -458,7 +466,7 @@
     }
     .main-form
     {
-        position: relative;
+        position: absolute;
     }
     .low-form
     {
@@ -472,13 +480,85 @@
         display: flex;
     }
 
-    /*.low-menu*/
-    /*{*/
-    /*    position: relative;*/
-    /*    display: flex;*/
+    .navbar
+    {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        bottom: 60px;
+        /*align-items: center;*/
+        padding: 8px 12px;
 
-    /*}*/
+    }
+
+    .low-menu
+    {
+        /*top: 40px;*/
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        /*margin:100px;*/
+
+    }
+
+    .low-menu li
+    {
+        /*text-align: center;*/
+        /*position: absolute;*/
+        bottom: 60px;
+        padding: 8px 12px;
+        margin: 0px 50px;
+        cursor: pointer;
+        font-family: 'Roboto Light';
+        font-size: 40px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: center;
+        /*-webkit-text-stroke: 1px #707070;*/
+    }
+
+    .low-menu li:hover
+    {
+        /*text-align: center;*/
+        /*position: absolute;*/
+        bottom: 60px;
+        padding: 8px 12px;
+        margin: 0px 50px;
+        cursor: pointer;
+        font-family: 'Roboto Light';
+        font-size: 40px;
+        color: #166cea;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: center;
+        /*-webkit-text-stroke: 1px #707070;*/
+    }
+
 </style>
+
+<nav class="header">
+    <ul class="nav-left">
+        <li><a href=""><img class="menu_icon" src="/menuicon"></a></li>
+        <li><a href=""><span class="Menu">Menu</span></a></li>
+        <li><span class="test1">fidslfisjfijsdlfijsdlifjsldifj</span></li>
+        <!-- <button onclick="location.href='/loginPage'">로그인</button> -->
+    </ul>
+    <ul class="nav-right">
+
+        <li><a href=""><span class="KR">KR</span></a></li>
+        <li><a href=""><span class="EN">EN</span></a></li>
+        <li><a href="/loginPage"><img class="login_icon" src="/loginicon"></a></li>
+        <li><a href=""><span class="UNAME">KR님 로그인</span></a></li>
+    </ul>
+</nav>
 
 <div class="EveryDay"><a href="/">Every Day</a></div>
 <section class="main-form">
@@ -500,31 +580,16 @@
 
 </section>
 
-
-<div class="low-menu">
-    <span class="All_contents">All Contents</span>
-    <span class="Drama">Drama</span>
-    <span class="Movie">Movie</span>
-    <span class="Entertainment">Entertainment</span>
-    <span class="Documentary">Documentary</span>
-</div>
-
-
-<nav class="header">
-    <ul class="nav-left">
-        <li><a href=""><img class="menu_icon" src="/menuicon"></a></li>
-        <li><a href=""><span class="Menu">Menu</span></a></li>
-        <li><span class="test1">fidslfisjfijsdlfijsdlifjsldifj</span></li>
-        <!-- <button onclick="location.href='/loginPage'">로그인</button> -->
-    </ul>
-    <ul class="nav-right">
-
-        <li><a href=""><span class="KR">KR</span></a></li>
-        <li><a href=""><span class="EN">EN</span></a></li>
-        <li><a href="/loginPage"><img class="login_icon" src="/loginicon"></a></li>
-        <li><a href=""><span class="UNAME">KR님 로그인</span></a></li>
+<nav class="navbar">
+    <ul class="low-menu">
+        <a href=""><li class="nav-item">AllContents</li></a>
+        <a href=""><li class="nav-item">Entertainment</li></a>
+        <a href=""><li class="nav-item">Movie</li></a>
+        <a href=""><li class="nav-item">Documentary</li></a>
+        <a href=""><li class="nav-item">Drama</li></a>
     </ul>
 </nav>
+
 </body>
 </html>
 <script type="text/javascript">

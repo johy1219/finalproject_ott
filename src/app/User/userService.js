@@ -67,9 +67,6 @@ exports.postSignIn = async function (userId, password) {
         } else if (passwordRows[0].status === "DELETED") {
             return errResponse(baseResponse.SIGNIN_WITHDRAWAL_ACCOUNT);
         }
-
-        console.log(passwordRows[0].userId) // DB의 userId
-
         //토큰 생성 Service
         let token = await jwt.sign(
             {

@@ -19,17 +19,17 @@
             url: "/users",
             data: (
                 {"userId" : userId , "password" : password , "userName" : userName,
-                "userAge" : userAge , "userSex" : value, "userNum" : userNum,
-                "userEmail" : userEmail}
+                    "userAge" : userAge , "userSex" : value, "userNum" : userNum,
+                    "userEmail" : userEmail}
             ),
             type: 'POST',
             dataType : 'JSON',
             success: function(response) {
-                    // alert("완료");
-                    // location.replace('/');
+                // alert("완료");
+                // location.replace('/');
                 if(response.isSuccess == true) {
                     alert("완료");
-                    location.replace('/'); //contents_survey 페이지로 이동하기
+                    location.replace('/');
                 }
                 else {
                     // alert("실패");
@@ -37,7 +37,6 @@
                 }
             }
         });
-        alert("요청보냄");
     }
     function main(){
         location.replace('/');
@@ -245,60 +244,60 @@
 </style>
 
 <body>
-    <div class="EveryDay"><a href="/">Every Day</a></div>
-    <nav class="header">
-        <ul class="nav-left">
-            <li><a href=""><img class="menu_icon" src="/menuicon"></a></li>
-            <li><a href=""><span class="Menu">Menu</span></a></li>
+<div class="EveryDay"><a href="/">Every Day</a></div>
+<nav class="header">
+    <ul class="nav-left">
+        <li><a href=""><img class="menu_icon" src="/menuicon"></a></li>
+        <li><a href=""><span class="Menu">Menu</span></a></li>
 
-            <!-- <button onclick="location.href='/loginPage'">로그인</button> -->
-        </ul>
-    </nav>
-    <section class="signup-form">
-        <form action="">
-            <div class="mainpage" onclick="location.replace('/');">메인페이지</div>
-            <div class="int-area">
-                <input type="text" id="userid" name="userid" autocomplete="off" required>
-                <label for="userid">ID</label></br>
-            </div>
-            <div class="int-area">
-                <input type="password" id="password" name="password" autocomplete="off" required>
-                <label for="password">PASSWORD</label></br>
-            </div>
-            <div class="int-area">
-                <input type="text" id="userName" name="userName" autocomplete="off" required>
-                <label for="userName">NAME</label></br>
-            </div>
-            <div class="int-area">
-                <input type="text" id="userAge" name="userAge" autocomplete="off" required>
-                <label for="userAge">AGE</label></br>
-            </div>
-            <div class="int-area2">
+        <!-- <button onclick="location.href='/loginPage'">로그인</button> -->
+    </ul>
+</nav>
+<section class="signup-form">
+    <form action="">
+        <div class="mainpage" onclick="location.replace('/');">메인페이지</div>
+        <div class="int-area">
+            <input type="text" id="userid" name="userid" autocomplete="off" required>
+            <label for="userid">ID</label></br>
+        </div>
+        <div class="int-area">
+            <input type="password" id="password" name="password" autocomplete="off" required>
+            <label for="password">PASSWORD</label></br>
+        </div>
+        <div class="int-area">
+            <input type="text" id="userName" name="userName" autocomplete="off" required>
+            <label for="userName">NAME</label></br>
+        </div>
+        <div class="int-area">
+            <input type="text" id="userAge" name="userAge" autocomplete="off" required>
+            <label for="userAge">AGE</label></br>
+        </div>
+        <div class="int-area2">
 
-                <label id="click_male_label" for="click_male">Male</label>
-                <input type="radio" id="click_male" name="userSex" value="Male"
-                       onclick="signUp()" autocomplete="off" required checked>
+            <label id="click_male_label" for="click_male">Male</label>
+            <input type="radio" id="click_male" name="userSex" value="Male"
+                   onclick="signUp()" autocomplete="off" required checked>
 
-                <label id="click_female_label" for="click_female">Female</label>
-                <input type="radio" id="click_female" name="userSex" value="Female"
-                       onclick="signUp()" autocomplete="off" required>
-<!--                <div id="result"></div>-->
-                <label id="label_SEX">SEX</label></br>
+            <label id="click_female_label" for="click_female">Female</label>
+            <input type="radio" id="click_female" name="userSex" value="Female"
+                   onclick="signUp()" autocomplete="off" required>
+            <!--                <div id="result"></div>-->
+            <label id="label_SEX">SEX</label></br>
 
-            </div>
-            <div class="int-area">
-                <input type="text" id="userNum" name="userNum" autocomplete="off" required>
-                <label for="userNum">TELEPHONE</label></br>
-            </div>
-            <div class="int-area">
-                <input type="text" id="userEmail" name="userEmail" autocomplete="off" required>
-                <label for="userEmail">EMAIL</label></br>
-            </div>
+        </div>
+        <div class="int-area">
+            <input type="text" id="userNum" name="userNum" autocomplete="off" required>
+            <label for="userNum">TELEPHONE</label></br>
+        </div>
+        <div class="int-area">
+            <input type="text" id="userEmail" name="userEmail" autocomplete="off" required>
+            <label for="userEmail">EMAIL</label></br>
+        </div>
 
-            <div class="btn-area">
-                <button type="submit" id="btn" onclick="signUp()" >SIGN UP</button>
-            </div>
-        </form>
-    </section>
+        <div class="btn-area">
+            <button type="submit" id="btn" onclick="signUp()" >SIGN UP</button>
+        </div>
+    </form>
+</section>
 
 </body>

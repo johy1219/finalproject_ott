@@ -4,7 +4,7 @@
 <script type="text/javascript">
     let jwt =""
     let userId = ""
-    const myModule = require('./index.html');
+    // const myModule = require('./index.html');
     // let val = myModule.hello();
     function login() {
         let user = $("#userid").val();
@@ -16,54 +16,69 @@
             success: function (result) {
                 if(result.code == 1000) {
                     alert('성공');
-                    jwt = result.result['jwt'];
-                    check();
-                    alert(user+"님 환영합니다.");
                     location.replace('/');
-                    myModule.hello();
-                    // login_success(user);
+                    var cookie = getCookie('jwt')
+                    if (cookie!=""){
+                        jwt = cookie
+                    }
                 }
                 else if(result.code == 4000) {
                     alert("로그인 정보가 없습니다.");
-                    location.replace('/');
+                    location.replace('/loginPage');
+                }
+            }
+        });
+        alert("로그인")
+    }
+
+    function login_success(user) {
+        alert(user);
+        document.getElementsByClassName("test1").innerHTML = "hello";
+    }
+
+    function auto_check() {
+        var ajax = $.ajax({
+            url: "/auto",
+            type: 'GET',
+            headers: { 'x-access-token': jwt },
+            success: function (result) {
+                if(result.code == 1001) {
+                    userId = result.result;
+                    alert(userId + "님 환영합니다.")
+                    return userId;
+                }
+                else if(result.code == 3000) {
+                    userId = "";
+                    location.replace('/loginPage');
+                    alert("로그인 정보가 없습니다.");
+                    return userId;
                 }
             }
         });
     }
 
-    // function login_success(user) {
-    //     alert(user);
-    //     document.getElementsByClassName("test1").innerHTML = "hello";
-    // }
-
-    function check() {
-        var ajax = $.ajax({
-            url: "/auto-login",
-            type: 'GET',
-            headers: {
-                "x-access-token":  jwt
-            },
-            success: function (result) {
-                if(result.code == 1001) {
-                    var sessionData = result.result;
-                    sessionStorage.setItem("userId", sessionData )
-                }
-                else if (result.code == 4000){
-
-                }
+    function getCookie(name) {
+        var nameOfCookie = name+"=";
+        var x = 0;
+        while (x <= document.cookie.length) {
+            var y = (x + nameOfCookie.length);
+            if (document.cookie.substring(x, y) == nameOfCookie) {
+                if ((endOfCookie = document.cookie.indexOf(";", y)) == -1)
+                endOfCookie = document.cookie.length;
+                return unescape(document.cookie.substring(y, endOfCookie));
             }
-        });
+            x = document.cookie.indexOf(" ", x) + 1;
+            if (x == 0)
+            break;
+        }
+        return "";
     }
 
     function kakao() {
         var ajax = $.ajax({
             url: "/kakao",
-            type: 'GET',
-            success: function (result) {
-                alert(result.accessToken)
-            }
+            type: 'GET'
         });
-        alert("ok");
     }
 
     function main(){
