@@ -1,3 +1,83 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script type=text/javascript src="index.html"></script>
+<script type="text/javascript">
+    let resultList = []
+    let list_len = 0
+    function searchAll() {
+        var ajax = $.ajax({
+            url: "/all",
+            type: 'GET',
+            success: function (result) {
+                if(result.code == 1000) {
+                    resultList = result.result;
+                    list_len = resultList.length;
+                    document.getElementById("search-total").innerHTML = "검색결과 " + list_len + "건"
+                    let h = 0
+                    for(let h=0;h<resultList.length;h++)
+                    {
+                        const img = resultList[h]["src"];
+                        const name = resultList[h]["name"];
+                        const platform = resultList[h]["platform"];
+                        const actor = resultList[h]["actor"];
+                        const explain = resultList[h]["explain"];
+
+                        $("#content").append(
+                            "<ul><li><a href=\"\"><img id=\"content_img\"src=" + img + "></a></li>" +
+                            "<li><a href=\"\"><div id=\"content_name\"><label>"+ name +"</label></div></a></li>" +
+                            "<li><a href=\"\"><div id=\"content_platform\"><label>"+platform+"</label></div></a></li>" +
+                            "<li><a href=\"\"><div id=\"content_actor\"><label>"+actor+"</label></div></a></li>" +
+                            "<li><a href=\"\"><div id=\"content_story\"><label>"+explain+"</label></div></a></li><ul/>"
+                        );
+                    }
+
+                }
+                else if(result.code == 4000) {
+                    alert("로그인 정보가 없습니다.");
+                }
+            }
+        });
+    }
+    function searchName() {
+        $("#content *").remove();
+        let name = $("#search").val();
+        var ajax = $.ajax({
+            url: "/name",
+            type: 'GET',
+            data: ({"name" : name}),
+            success: function (result) {
+                if(result.code == 1000) {
+                    resultList = result.result;
+                    list_len = resultList.length;
+                    document.getElementById("search-total").innerHTML = "검색결과 " + list_len + "건"
+                    let h = 0
+                    for(let h=0;h<resultList.length;h++)
+                    {
+                        const img = resultList[h]["src"];
+                        const name = resultList[h]["name"];
+                        const platform = resultList[h]["platform"];
+                        const actor = resultList[h]["actor"];
+                        const explain = resultList[h]["explain"];
+
+                        $("#content").append(
+                            "<ul><li><a href=\"\"><img id=\"content_img\"src=" + img + "></a></li>" +
+                            "<li><a href=\"\"><div id=\"content_name\"><label>"+ name +"</label></div></a></li>" +
+                            "<li><a href=\"\"><div id=\"content_platform\"><label>"+platform+"</label></div></a></li>" +
+                            "<li><a href=\"\"><div id=\"content_actor\"><label>"+actor+"</label></div></a></li>" +
+                            "<li><a href=\"\"><div id=\"content_story\"><label>"+explain+"</label></div></a></li><ul/>"
+                        );
+                    }
+
+                }
+                else if(result.code == 4000) {
+                    alert("검색 정보가 없습니다.");
+                }
+            }
+        });
+        alert(name);
+    }
+</script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head> <meta charset="UTF-8">
@@ -10,7 +90,7 @@
     <!--    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">-->
     <!--<link rel="stylesheet" type="text/css" href="/var/www/html/api-server-node-js/view/style.css">-->
 </head>
-<body>
+<body onload="searchAll()">
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
@@ -317,7 +397,7 @@
 
     }
 
-    .content_img
+    #content_img
     {
         width: 110px;
         height: 150px;
@@ -326,7 +406,7 @@
         float: left;
         color: #fff;
     }
-    .content_name
+    #content_name
     {
         width: 200px;
         height: 150px;
@@ -335,7 +415,7 @@
         float: left;
         color: #fff;
     }
-    .content_platform
+    #content_platform
     {
         width: 200px;
         height: 150px;
@@ -344,7 +424,7 @@
         float: left;
         color: #fff;
     }
-    .content_actor
+    #content_actor
     {
         /* display: inline-block;
         vertical-align: middle;
@@ -356,7 +436,7 @@
         float: left;
         color: #fff;
     }
-    .content_story
+    #content_story
     {
         width: 600px;
         height: 150px;
@@ -371,7 +451,7 @@
         height: 1px;
         background: #999;
     }
-    .search-total
+    #search-total
     {
         font-size: 18px; color:#fff;
     }
@@ -397,67 +477,21 @@
 <section class="main-form">
     <div class="searchArea">
         <form>
-            <input type="search" placeholder="콘텐츠를 지금 바로 검색하세요.">
-            <a href=""><img class="search_icon" src="/searchicon"></a>
+            <input type="search" id="search"placeholder="콘텐츠를 지금 바로 검색하세요.">
+            <a href=""><img type="button" class="search_icon" src="/searchicon" onclick="searchName()"></a>
         </form>
     </div>
 </section>
 
 <section class="search-view">
-    <span class="search-total">검색 결과 &&건</span>
+    <span id="search-total">검색 결과 건</span>
     <div class="search-content">
-        <ul>
-            <li><a href=""><img class="content_img" src="/exampleImage"></a></li>
-            <li><a href=""><div class="content_name"><label>범인은 바로 너</label></div></a></li>
-            <li><a href=""><div class="content_platform"><label>넷플릭스</label></div></a></li>
-            <li><a href=""><div class="content_actor"><label>유재석, 박민영, 오세훈</label></div></a></li>
-            <li><a href=""><div class="content_story"><label>갑자기 세상을 떠난 화가 그녀가 남긴 자화상을 찾아라! 그런데 이번엔 경쟁자가 있다? 탐정단 앞에 나타난 진짜 천재 탐정단. </label></div></a></li>
+        <ul id="content">
         </ul>
     </div>
     <br>
     <hr class="my-hr">
     <br>
-
-    <div class="search-content">
-        <ul>
-            <li><a href=""><img class="content_img" src="/exampleImage3"></a></li>
-            <li><a href=""><div class="content_name"><label>범인은 바로 너</label></div></a></li>
-            <li><a href=""><div class="content_platform"><label>넷플릭스</label></div></a></li>
-            <li><a href=""><div class="content_actor"><label>김세정</label></div></a></li>
-            <li><a href=""><div class="content_story"><label>갑자기 세상을 떠난 화가, 그녀가 남긴 자화상을 찾아라! </label></div></a></li>
-        </ul>
-    </div>
-    <br>
-    <hr class="my-hr">
-    <br>
-
-    <div class="search-content">
-        <ul>
-            <li><a href=""><img class="content_img" src="/exampleImage"></a></li>
-            <li><a href=""><div class="content_name"><label>범인은 바로 너</label></div></a></li>
-            <li><a href=""><div class="content_platform"><label>넷플릭스</label></div></a></li>
-            <li><a href=""><div class="content_actor"><label>김종민, 이광수</label></div></a></li>
-            <li><a href=""><div class="content_story"><label>그런데 이번엔 경쟁자가 있다? 탐정단 앞에 나타난 진짜 천재 탐정단. </label></div></a></li>
-        </ul>
-    </div>
-    <br>
-    <hr class="my-hr">
-    <br>
-
-    <div class="search-content">
-        <ul>
-            <li><a href=""><img class="content_img" src="/exampleImage2"></a></li>
-            <li><a href=""><div class="content_name"><label>범인은 바로 너</label></div></a></li>
-            <li><a href=""><div class="content_platform"><label>넷플릭스</label></div></a></li>
-            <li><a href=""><div class="content_actor"><label>유재석, 박민영, 오세훈, 김세정</label></div></a></li>
-            <li><a href=""><div class="content_story"><label>그런데 이번엔 경쟁자가 있다? 탐정단 앞에 나타난 진짜 천재 참정단. </label></div></a></li>
-        </ul>
-    </div>
-
-    <br>
-    <hr class="my-hr">
-    <br>
-
 </section>
 
 

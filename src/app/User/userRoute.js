@@ -19,6 +19,7 @@ module.exports = function(app){
 
     // 2. 로그인 페이지 HTML
     app.get('/loginicon',user.getLogin);
+    app.get('/logouticon',user.getLogout);
     app.get('/loginPage',user.loginPage);
     app.get('/kakaoicon',user.getkakao);
 
@@ -31,6 +32,8 @@ module.exports = function(app){
 
     // 5. 로그인 하기 API (JWT 생성)
     app.post('/login', user.login);
+
+    app.post('/logot',jwtMiddleware ,user.logout);
 
     app.post('/interests');
 

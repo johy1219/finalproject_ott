@@ -29,6 +29,16 @@ async function selectContentByTag(connection,tagId) {
   return contentRow;
 }
 
+// 컨텐츠-태그 조회
+async function selectContentByName(connection,name) {
+    const selectContentTagQuery = `
+        SELECT *
+        FROM Content where name like ?;
+                 `;
+    const [contentRow] = await connection.query(selectContentTagQuery,name);
+    return contentRow;
+}
+
 // 유저 관심사 추가
 async function insertUserInterest(connection,insertInfo) {
     const insertUserInterestQuery = `
@@ -38,10 +48,13 @@ async function insertUserInterest(connection,insertInfo) {
     const [InsertRow] = await connection.query(insertUserInterestQuery,insertInfo);
     return InsertRow;
 }
+
+
 module.exports = {
   selectContentAll,
   selectTagId,
   selectContentByTag,
-  insertUserInterest
+  insertUserInterest,
+    selectContentByName
 
 };

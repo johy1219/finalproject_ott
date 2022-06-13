@@ -29,3 +29,11 @@ exports.retrieveContentByTag = async function (tagId) {
     return contentResult;
 };
 
+exports.retrieveContentByName = async function (name) {
+    const connection = await pool.getConnection(async (conn) => conn);
+    const contentResult = await contentDao.selectContentByName(connection,name);
+    connection.release();
+
+    return contentResult;
+};
+

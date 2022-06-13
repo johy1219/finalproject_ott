@@ -66,6 +66,9 @@ exports.loginPage = async function (req, res) {
 exports.getLogin = async function (req, res) {
     return res.sendFile(path.join(__dirname,'../../../view/login_icon.png'));
 }
+exports.getLogout= async function (req, res) {
+    return res.sendFile(path.join(__dirname,'../../../view/logout1_icon.png'));
+}
 
 // /** API No. 3 [GET] 회원가입 페이지 HTML API **/
 exports.signUpPage = async function (req, res) {
