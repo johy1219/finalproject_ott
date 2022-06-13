@@ -23,6 +23,37 @@
                 alert("Dsfifjdsijfidididididididididi");
             }
         }
+
+        function color_change_event() {
+            document.querySelector('.searchArea').classList.add("searchArea_change");
+            // alert("fjsdif");
+            // const divtag = document.querySelector(".searchArea").classList.contains("searchArea_change");
+            // if (!divtag){
+            //     document.querySelector('.searchArea').classList.add("searchArea_change");
+            // }else {
+            //     document.querySelector('.searchArea').classList.remove("searchArea_change");
+            // }
+            // divtag.style.backgroundColor = '#166cea';
+        }
+
+        function color_change_event2() {
+            document.querySelector('.searchInput').classList.add("searchInput_change");
+            // alert("fjsdif");
+            // const divtag = document.querySelector(".searchInput").classList.contains("searchInput_change");
+            // if (!divtag){
+            //     document.querySelector('.searchInput').classList.add("searchInput_change");
+            // }else {
+            //     document.querySelector('.searchInput').classList.remove("searchInput_change");
+            // }
+            // divtag.style.backgroundColor = '#166cea';
+        }
+
+        // document.querySelector('.searchArea').addEventListener("click", handleClick);
+        //
+        // function init()
+        // {
+        //     handleClick();
+        // }
     </script>
 </head>
 <body>
@@ -213,10 +244,24 @@
         border-radius: 48px;
         background-color: #fff;
     }
-    .searchArea:active
+    .searchArea_change
     {
+        /*position: absolute;*/
+        /*!*text-align: center;*!*/
+        /*width: 446px;*/
+        /*left: 25px;*/
+        /*height: 52px;*/
+        /*!* margin: 44px 137px 29px 149px; *!*/
+        /*!* padding: 20px 21.7px 18px 41px; *!*/
+        /*!*margin-top: 520px;*!*/
+        /*!*margin-left: 724px;*!*/
+        /*border-radius: 48px;*/
         background-color: #166cea;
     }
+    /*.searchArea:hover*/
+    /*{*/
+    /*    background-color: #166cea;*/
+    /*}*/
     .search_icon
     {
         /*display: flex;*/
@@ -239,9 +284,15 @@
         outline:none;
 
     }
-    .searchArea form input:active
+
+    .searchInput_change
     {
         background-color: #166cea;
+    }
+
+    .searchArea form input:focus::placeholder
+    {
+        color: #fff;
     }
     /*.searchArea form img*/
     /*{*/
@@ -424,29 +475,6 @@
         -webkit-text-stroke: 1px #707070;
     }
 
-    .All_contents:hover {
-        /* position:absolute;
-        width: 221px;
-        height: 53px;
-        margin-top:987px;
-        margin-left:364px;
-        font-family: 'Roboto Light';
-        font-size: 40px;
-        font-weight: bold;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.33;
-        letter-spacing: normal;
-        text-align: left; */
-        color: #fff;
-        -webkit-text-stroke-width: 0px;
-
-    }
-    .Area2
-    {
-        width: 80px;
-        position: relative;
-    }
     .view_more
     {
         position: absolute;
@@ -463,6 +491,11 @@
         letter-spacing: normal;
         text-align: center;
         color: #fff;
+    }
+    .view_more:hover
+    {
+
+        color: #166cea;
     }
     .main-form
     {
@@ -548,7 +581,6 @@
     <ul class="nav-left">
         <li><a href=""><img class="menu_icon" src="/menuicon"></a></li>
         <li><a href=""><span class="Menu">Menu</span></a></li>
-        <li><span class="test1">fidslfisjfijsdlfijsdlifjsldifj</span></li>
         <!-- <button onclick="location.href='/loginPage'">로그인</button> -->
     </ul>
     <ul class="nav-right">
@@ -556,7 +588,7 @@
         <li><a href=""><span class="KR">KR</span></a></li>
         <li><a href=""><span class="EN">EN</span></a></li>
         <li><a href="/loginPage"><img class="login_icon" src="/loginicon"></a></li>
-        <li><a href=""><span class="UNAME">KR님 로그인</span></a></li>
+        <span id="loginName"></span>님
     </ul>
 </nav>
 
@@ -571,9 +603,9 @@
         <span class="view_more">View more</span>
         <a href=""><img class="pointer_icon" src="/pointericon"></a>
     </form>
-    <div class="searchArea">
+    <div class="searchArea" onclick="color_change_event()">
         <form>
-            <input type="search" placeholder="콘텐츠를 지금 바로 검색하세요.">
+            <input class="searchInput" type="search" placeholder="콘텐츠를 지금 바로 검색하세요." onclick="color_change_event2()">
             <a href="/searchPage"><img class="search_icon" src="/searchicon"></a>
         </form>
     </div>
