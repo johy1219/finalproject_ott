@@ -40,7 +40,7 @@ exports.postInterest = async function (req, res) {
 
 // /** API No. 2 [GET]컨텐츠 리스트 API **/
 exports.getContentName = async function (req, res) {
-    const {name} = req.body;
+    const name = req.body.name;
     setname = "%" + name +"%"
     const getContentRes = await contentProvider.retrieveContentByName(setname);
     return res.send(response(baseResponse.SUCCESS,getContentRes))

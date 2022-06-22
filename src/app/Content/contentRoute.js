@@ -15,7 +15,7 @@ module.exports = function(app){
     app.get('/content-filter',content.getContent)
 
     //필터링 컨텐츠 리스트
-    app.get('/content-name',content.getContentName)
+    app.post('/content-name',content.getContentName)
 
     app.post('/interests',jwtMiddleware,content.postInterest);
 

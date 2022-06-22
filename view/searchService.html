@@ -4,46 +4,11 @@
 <script type="text/javascript">
     let resultList = []
     let list_len = 0
-    function searchAll() {
-        var ajax = $.ajax({
-            url: "/all",
-            type: 'GET',
-            success: function (result) {
-                if(result.code == 1000) {
-                    resultList = result.result;
-                    list_len = resultList.length;
-                    document.getElementById("search-total").innerHTML = "검색결과 " + list_len + "건"
-                    let h = 0
-                    for(let h=0;h<resultList.length;h++)
-                    {
-                        const img = resultList[h]["src"];
-                        const name = resultList[h]["name"];
-                        const platform = resultList[h]["platform"];
-                        const actor = resultList[h]["actor"];
-                        const explain = resultList[h]["explain"];
-
-                        $("#content").append(
-                            "<ul><li><a href=\"\"><img id=\"content_img\"src=" + img + "></a></li>" +
-                            "<li><a href=\"\"><div id=\"content_name\"><label>"+ name +"</label></div></a></li>" +
-                            "<li><a href=\"\"><div id=\"content_platform\"><label>"+platform+"</label></div></a></li>" +
-                            "<li><a href=\"\"><div id=\"content_actor\"><label>"+actor+"</label></div></a></li>" +
-                            "<li><a href=\"\"><div id=\"content_story\"><label>"+explain+"</label></div></a></li><ul/>"
-                        );
-                    }
-
-                }
-                else if(result.code == 4000) {
-                    alert("로그인 정보가 없습니다.");
-                }
-            }
-        });
-    }
     function searchName() {
-        $("#content *").remove();
-        let name = $("#search").val();
+        let name = getCookie('cookie');
         var ajax = $.ajax({
-            url: "/name",
-            type: 'GET',
+            url: "/content-name",
+            type: 'POST',
             data: ({"name" : name}),
             success: function (result) {
                 if(result.code == 1000) {
@@ -58,7 +23,6 @@
                         const platform = resultList[h]["platform"];
                         const actor = resultList[h]["actor"];
                         const explain = resultList[h]["explain"];
-
                         $("#content").append(
                             "<ul><li><a href=\"\"><img id=\"content_img\"src=" + img + "></a></li>" +
                             "<li><a href=\"\"><div id=\"content_name\"><label>"+ name +"</label></div></a></li>" +
@@ -67,14 +31,43 @@
                             "<li><a href=\"\"><div id=\"content_story\"><label>"+explain+"</label></div></a></li><ul/>"
                         );
                     }
-
                 }
                 else if(result.code == 4000) {
                     alert("검색 정보가 없습니다.");
                 }
             }
         });
-        alert(name);
+    }
+
+    function getCookie(name) {
+        var nameOfCookie = name+"=";
+        var x = 0;
+        while (x <= document.cookie.length) {
+            var y = (x + nameOfCookie.length);
+            if (document.cookie.substring(x, y) == nameOfCookie) {
+                if ((endOfCookie = document.cookie.indexOf(";", y)) == -1)
+                    endOfCookie = document.cookie.length;
+                return unescape(document.cookie.substring(y, endOfCookie));
+            }
+            x = document.cookie.indexOf(" ", x) + 1;
+            if (x == 0)
+                break;
+        }
+        return "";
+    }
+
+    function setCookie(){
+        let search = $("#search").val();
+        if (search.length=0)
+        {
+            location.replace("/searchAll");
+        }
+        else {
+            let cook = "cookie="+search
+            document.cookie = cook;
+            location.replace("/searchPage");
+        }
+
     }
 </script>
 
@@ -90,7 +83,7 @@
     <!--    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">-->
     <!--<link rel="stylesheet" type="text/css" href="/var/www/html/api-server-node-js/view/style.css">-->
 </head>
-<body onload="searchAll()">
+<body onload="searchName()">
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
@@ -478,7 +471,7 @@
     <div class="searchArea">
         <form>
             <input type="search" id="search"placeholder="콘텐츠를 지금 바로 검색하세요.">
-            <a href=""><img type="button" class="search_icon" src="/searchicon" onclick="searchName()"></a>
+            <a href=""><img type="button" class="search_icon" src="/searchicon" onclick="setCookie()"></a>
         </form>
     </div>
 </section>

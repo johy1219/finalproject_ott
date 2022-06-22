@@ -93,13 +93,17 @@ exports.login = async function (req, res) {
     const {userId, password} = req.body;
     const signInResponse = await userService.postSignIn(userId, password);
     if(signInResponse.code == 1000){
-        res.cookie('jwt',signInResponse.result['jwt'])
+        res.cookie('jwt',userId)
     }
     return res.send(signInResponse);
 };
 
 exports.searchPage = async function (req, res) {
     return res.sendFile(path.join(__dirname,'../../../view/searchService.html'));
+}
+
+exports.searchAll = async function (req, res) {
+    return res.sendFile(path.join(__dirname,'../../../view/searchAll.html'));
 }
 
 exports.getExample = async function (req, res) {
@@ -153,17 +157,24 @@ exports.kakaoLogIn = async function (req,res)
 };
 passport.use('kakao-login', new KakaoStrategy({
         clientID: '5898d4ba2fdda040b411119996107a41',
-        callbackURL: 'http://3.36.92.132:3000/kakao/oauth'},
+        callbackURL: 'http://3.36.92.132:3000/kakao/oauth',
+    clientSecret: 'tYgFpoReW7PJROELU6dWSn1HYCBXCGmh'},
     async (accessToken, refreshToken, profile, done) =>
     {
-        res.cookie("AC",accessToken);
         console.log(accessToken);
+        return done;
     }));
 
 /** JWT 토큰 검증 API[GET] /auto-login **/
 exports.check = async function (req, res) {
     const userIdResult = req.verifiedToken.userId;
     return res.send(response(baseResponse.TOKEN_VERIFICATION_SUCCESS,userIdResult))
+};
+
+/** JWT 토큰 검증 API[GET] /auto-login **/
+exports.logout = async function (req, res) {
+    res.clearCookie("jwt");
+    return res.send(response(baseResponse.SUCCESS))
 };
 
 exports.sendMail = async function (req,res)

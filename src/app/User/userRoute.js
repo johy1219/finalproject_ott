@@ -11,6 +11,7 @@ module.exports = function(app){
     app.get('/intro',user.getIntro); // 배경이미지
     app.get('/searchicon',user.getSearch);
     app.get('/searchPage',user.searchPage);
+    app.get('/searchAll',user.searchAll);
     app.get('/pointericon',user.getPointer);
 
     // 1. 메인 API
@@ -33,7 +34,7 @@ module.exports = function(app){
     // 5. 로그인 하기 API (JWT 생성)
     app.post('/login', user.login);
 
-    app.post('/logot',jwtMiddleware ,user.logout);
+    app.get('/logout' ,user.logout);
 
     app.post('/interests');
 

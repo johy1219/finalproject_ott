@@ -15,9 +15,7 @@
             type: 'POST',
             success: function (result) {
                 if(result.code == 1000) {
-                    alert('성공');
                     // alert(user);
-                    login_success();
                     // $.getScript("index.html", function(){login_success();});
                     location.replace('/');
                     var cookie = getCookie('jwt')
@@ -31,7 +29,7 @@
                 }
             }
         });
-        alert("로그인")
+        alert("로그인");
     }
 
     function login_success(user) {
@@ -83,6 +81,7 @@
             url: "/kakao",
             type: 'GET'
         });
+        alert("카카오 요청 보냄");
     }
 
     function main(){

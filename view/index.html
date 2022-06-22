@@ -36,9 +36,66 @@
             // }
             // divtag.style.backgroundColor = '#166cea';
         }
+        function logout() {
+            var ajax = $.ajax({
+                url: "/logout",
+                type: 'GET',
+                success: function(response) {
+                    if(response.code == 1000) {
+                        location.replace('/');
+                    }
+                    else {
+                        alert("실패");
+                    }
+                }
+            });
+        }
+
+        function check()
+        {
+            let token = getCookie('jwt');
+            if (token ==""){
+                $("#logout_icon").hide();
+                $("#loginName").hide();
+            }else{
+                $("#login_icon").hide();
+                $("#loginName").text(token);
+                $("#loginName").show();
+            }
+
+        }
+        function setCookie(){
+            let search = $("#searchInput").val()
+            if (search=="")
+            {
+                location.replace("/searchAll");
+            }
+            else {
+                let cook = "cookie="+search
+                document.cookie = cook;
+                location.replace("/searchPage");
+            }
+
+        }
+        function getCookie(name) {
+            var nameOfCookie = name+"=";
+            var x = 0;
+            while (x <= document.cookie.length) {
+                var y = (x + nameOfCookie.length);
+                if (document.cookie.substring(x, y) == nameOfCookie) {
+                    if ((endOfCookie = document.cookie.indexOf(";", y)) == -1)
+                        endOfCookie = document.cookie.length;
+                    return unescape(document.cookie.substring(y, endOfCookie));
+                }
+                x = document.cookie.indexOf(" ", x) + 1;
+                if (x == 0)
+                    break;
+            }
+            return "";
+        }
 
         function color_change_event2() {
-            document.querySelector('.searchInput').classList.add("searchInput_change");
+            document.querySelector('#searchInput').classList.add("searchInput_change");
             // alert("fjsdif");
             // const divtag = document.querySelector(".searchInput").classList.contains("searchInput_change");
             // if (!divtag){
@@ -57,7 +114,7 @@
         // }
     </script>
 </head>
-<body>
+<body onload="check()">
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
@@ -176,10 +233,30 @@
         color: #7b7b7b;
     }
 
-    .login_icon {
+    #login_icon {
         position: absolute;
         width: 100%;
         height: 26px;
+        cursor: pointer;
+
+        /*text-align: left;*/
+        /* border: solid 2px #fff; */
+    }
+    #logout_icon {
+        position: absolute;
+        width: 100%;
+        height: 26px;
+        cursor: pointer;
+
+        /*text-align: left;*/
+        /* border: solid 2px #fff; */
+    }
+    #loginName {
+        position: absolute;
+        width: 100%;
+        height: 26px;
+        top:36px;
+        right: 30px;
         cursor: pointer;
 
         /*text-align: left;*/
@@ -506,7 +583,7 @@
     {
         position: relative;
     }
-    .nav-right
+    #nav-right
     {
         width: 26px;
         position: relative;
@@ -584,13 +661,12 @@
         <li><a href=""><span class="Menu">Menu</span></a></li>
         <!-- <button onclick="location.href='/loginPage'">로그인</button> -->
     </ul>
-    <ul class="nav-right">
-
+    <ul id="nav-right">
         <li><a href=""><span class="KR">KR</span></a></li>
         <li><a href=""><span class="EN">EN</span></a></li>
-<!--        <li><a href="/loginPage"><img class="login_icon" src="/loginicon"></a></li>-->
-        <li><a href=""><img class="login_icon" src="/logouticon"></a></li>
-        <span id="loginName"></span>님
+        <li><a href="/loginPage"><img id="login_icon" src="/loginicon"></a></li>
+        <li><a><img id="logout_icon" src="/logouticon" onclick="logout()"></a></li>
+        <li><a href=""><span id="loginName"></span></a></li>
     </ul>
 </nav>
 
@@ -607,8 +683,8 @@
     </form>
     <div class="searchArea" onclick="color_change_event()">
         <form>
-            <input class="searchInput" type="search" placeholder="콘텐츠를 지금 바로 검색하세요." onclick="color_change_event2()">
-            <a href="/searchPage"><img class="search_icon" src="/searchicon"></a>
+            <input id="searchInput" class="searchInput" type="search" placeholder="콘텐츠를 지금 바로 검색하세요." onclick="color_change_event2()">
+            <a><img class="search_icon" src="/searchicon" onclick="setCookie()"></a>
         </form>
     </div>
 
