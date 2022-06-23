@@ -255,12 +255,20 @@
         position: absolute;
         width: 100%;
         height: 26px;
-        top:36px;
-        right: 30px;
+        top:0px;
+        right: 230px;
         cursor: pointer;
-
+        font-size: 20px;
         /*text-align: left;*/
         /* border: solid 2px #fff; */
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.3;
+        letter-spacing: normal;
+
+        color: #fff;
+        cursor: pointer;
     }
 
     .menu_icon
@@ -662,11 +670,12 @@
         <!-- <button onclick="location.href='/loginPage'">로그인</button> -->
     </ul>
     <ul id="nav-right">
+        <li><a href=""><span id="loginName"></span></a></li>
         <li><a href=""><span class="KR">KR</span></a></li>
         <li><a href=""><span class="EN">EN</span></a></li>
         <li><a href="/loginPage"><img id="login_icon" src="/loginicon"></a></li>
         <li><a><img id="logout_icon" src="/logouticon" onclick="logout()"></a></li>
-        <li><a href=""><span id="loginName"></span></a></li>
+
     </ul>
 </nav>
 
