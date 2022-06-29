@@ -63,6 +63,23 @@ exports.loginPage = async function (req, res) {
     return res.sendFile(path.join(__dirname,'../../../view/login.html'));
 }
 
+// 찜
+exports.wishListPage = async function (req, res) {
+    return res.sendFile(path.join(__dirname,'../../../view/wishListContent.html'));
+}
+
+exports.wishlistPageIn = async function (req, res) {
+    return res.sendFile(path.join(__dirname,'../../../view/dolike1.png'));
+}
+
+exports.wishListPageOut = async function (req, res) {
+    return res.sendFile(path.join(__dirname,'../../../view/dontlike1.png'));
+}
+
+exports.contentImage = async function (req, res) {
+    return res.sendFile(path.join(__dirname,'../../../view/like5.png'));
+}
+
 exports.getLogin = async function (req, res) {
     return res.sendFile(path.join(__dirname,'../../../view/login_icon.png'));
 }

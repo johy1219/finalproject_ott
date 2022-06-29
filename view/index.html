@@ -242,6 +242,13 @@
         /*text-align: left;*/
         /* border: solid 2px #fff; */
     }
+    #do_like_icon{
+        position: absolute;
+        right: 50px;
+        width: 100%;
+        height: 26px;
+        cursor: pointer;
+    }
     #logout_icon {
         position: absolute;
         width: 100%;
@@ -671,8 +678,9 @@
     </ul>
     <ul id="nav-right">
         <li><a href=""><span id="loginName"></span></a></li>
-        <li><a href=""><span class="KR">KR</span></a></li>
-        <li><a href=""><span class="EN">EN</span></a></li>
+<!--        <li><a href=""><span class="KR">KR</span></a></li>-->
+<!--        <li><a href=""><span class="EN">EN</span></a></li>-->
+        <li><a href="/wishListPage"><img id="do_like_icon" src="/likeicon"></a></li>
         <li><a href="/loginPage"><img id="login_icon" src="/loginicon"></a></li>
         <li><a><img id="logout_icon" src="/logouticon" onclick="logout()"></a></li>
 

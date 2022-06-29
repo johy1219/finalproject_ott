@@ -18,6 +18,11 @@ module.exports = function(app){
     app.get('/',user.getMain);
     app.get('/menuicon',user.getIcon);
 
+    // 찜 목록
+    app.get('/likeicon', user.wishlistPageIn);
+    app.get('/wishListPage', user.wishListPage);
+    app.get('/content_ex', user.contentImage);
+
     // 2. 로그인 페이지 HTML
     app.get('/loginicon',user.getLogin);
     app.get('/logouticon',user.getLogout);

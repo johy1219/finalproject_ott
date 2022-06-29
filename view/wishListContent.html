@@ -31,7 +31,7 @@
         align-items: center;
         height: 100vh;
         background-image: url("/intro");
-        background-repeat: repeat;
+        background-repeat: no-repeat;
         background-size: cover;
     }
     /* .blackrec{
@@ -284,17 +284,15 @@
         width: 1400px;
         /*height: 1000px;*/
         top: 300px;
-        /*background: black;*/
+        /* background: white; */
         position: absolute;
-
-        /*margin-top: 5px;*/
+    <!-- margin-top: 10px; -->
         text-align: left;
     }
     .search-content
     {
-        margin-top: 20px;
-        text-align: center;
-        line-height: 150px;
+    <!-- text-align: center; -->
+        /*line-height: 150px;*/
         /* width: 100%; */
         height: 150px;
         /* overflow: auto; */
@@ -308,13 +306,28 @@
 
     .content_img
     {
-        /*width: 150px;*/
-        height: 150px;
-        padding-right: 20px;
-        border-right: 1px solid #999;
+        width: 250px;
+        height: 300px;
+        margin-right: 30px;
+        margin-bottom: 30px;
+        /* margin-right: 19px; */
+        padding: 0px;
         float: left;
         color: #fff;
     }
+    /*.content_img:hover*/
+    /*{*/
+    /*    position: relative;*/
+    /*    width: 250px;*/
+    /*    height: 300px;*/
+    /*    margin-right: 30px;*/
+    /*    margin-bottom: 30px;*/
+    /*    !* margin-right: 19px; *!*/
+    /*    background-color: rgba(0,0,0,0.8);*/
+    /*    padding: 0px;*/
+    /*    float: left;*/
+    /*    color: #fff;*/
+    /*}*/
     .content_name
     {
         width: 200px;
@@ -361,17 +374,46 @@
         float: left;
         text-align: left;
     }
-    .my-hr
-    {
-        border: 0px;
-        height: 1px;
-        background: #999;
+
+    .like_list{
+        width: 250px;
+        height: 300px;
+        margin-right: 30px;
+        margin-bottom: 30px;
+        /* margin-right: 19px; */
+        padding: 0px;
+        float: left;
+        color: #fff;
+        position:relative;
     }
-    .search-total
-    {
-        font-size: 18px; color:#fff;
+
+    .contents{
+        opacity: 0;
+        position: absolute;
+        text-align: center;
+        top: 20%;
+        left: 25%;
 
     }
+
+    .like_list:hover
+    {
+      overflow: hidden;
+    }
+
+    .like_list>a:hover img {
+        transform: scale(1.5);
+        transition: transform 1s;
+        filter: brightness(20%);
+    }
+
+    .like_list>a:hover .contents{
+        opacity: 1;
+    }
+
+    /*.contents{*/
+    /*    opacity: 0;*/
+    /*}*/
 
 </style>
 
@@ -385,7 +427,6 @@
         <!-- <button onclick="location.href='/loginPage'">로그인</button> -->
     </ul>
     <ul class="nav-right">
-        <li><a href=""><span>찜</span></a></li>
         <li><a href=""><span class="KR">KR</span></a></li>
         <li><a href=""><span class="EN">EN</span></a></li>
         <li><a href="/loginPage"><img class="login_icon" src="/loginicon"></a></li>
@@ -402,59 +443,29 @@
 </section>
 
 <section class="search-view">
-    <span class="search-total">검색 결과 &&건</span>
     <div class="search-content">
-        <ul>
-            <li><a href=""><img class="content_img" src="/exampleImage"></a></li>
-            <li><a href=""><div class="content_name"><label>범인은 바로 너</label></div></a></li>
-            <li><a href=""><div class="content_platform"><label>넷플릭스</label></div></a></li>
-            <li><a href=""><div class="content_actor"><label>유재석, 박민영, 오세훈</label></div></a></li>
-            <li><a href=""><div class="content_story"><label>갑자기 세상을 떠난 화가 그런데 이번엔 경쟁자가 있다? </label></div></a></li>
-        </ul>
-    </div>
-    <br>
-    <hr class="my-hr">
-    <br>
+        <div class="like_list"><a href=""><img class="content_img" src="like1.jpg"></a></div>
+        <div class="like_list"><a href=""><img class="content_img" src="like2.jfif"></a></div>
+        <div class="like_list"><a href=""><img class="content_img" src="like3.jpg"></a></div>
+        <div class="like_list"><a href=""><img class="content_img" src="like4.jpg"></a></div>
 
-    <div class="search-content">
-        <ul>
-            <li><a href=""><img class="content_img" src="/exampleImage3"></a></li>
-            <li><a href=""><div class="content_name"><label>범인은 바로 너</label></div></a></li>
-            <li><a href=""><div class="content_platform"><label>넷플릭스</label></div></a></li>
-            <li><a href=""><div class="content_actor"><label>김세정</label></div></a></li>
-            <li><a href=""><div class="content_story"><label>갑자기 세상을 떠난 화가, 그녀가 남긴 자화상을 찾아라! </label></div></a></li>
-        </ul>
-    </div>
-    <br>
-    <hr class="my-hr">
-    <br>
+        <div class="like_list">
+            <a href="">
+                <img class="content_img" src="/content_ex">
+                <div class="contents">
+                    <p>콘텐츠 제목</p><br>
+                    <p>콘텐츠 간단한 설명</p><br>
+                    <p>플랫폼</p>
+                </div>
+            </a>
+        </div>
 
-    <div class="search-content">
-        <ul>
-            <li><a href=""><img class="content_img" src="/exampleImage"></a></li>
-            <li><a href=""><div class="content_name"><label>범인은 바로 너</label></div></a></li>
-            <li><a href=""><div class="content_platform"><label>넷플릭스</label></div></a></li>
-            <li><a href=""><div class="content_actor"><label>김종민, 이광수</label></div></a></li>
-            <li><a href=""><div class="content_story"><label>그런데 이번엔 경쟁자가 있다? 탐정단 앞에 나타난 진짜 천재 탐정단. </label></div></a></li>
-        </ul>
+        <div class="like_list"><a href=""><img class="content_img" src="like6.jpg"></a></div>
+        <div class="like_list"><a href=""><img class="content_img" src="like7.jpg"></a></div>
+        <div class="like_list"><a href=""><img class="content_img" src="like8.jfif"></a></div>
+        <div class="like_list"><a href=""><img class="content_img" src="like9.jpg"></a></div>
+        <div class="like_list"><a href=""><img class="content_img" src="like10.jpg"></a></div>
     </div>
-    <br>
-    <hr class="my-hr">
-    <br>
-
-    <div class="search-content">
-        <ul>
-            <li><a href=""><img class="content_img" src="/exampleImage2"></a></li>
-            <li><a href=""><div class="content_name"><label>범인은 바로 너</label></div></a></li>
-            <li><a href=""><div class="content_platform"><label>넷플릭스</label></div></a></li>
-            <li><a href=""><div class="content_actor"><label>유재석, 박민영, 오세훈, 김세정</label></div></a></li>
-            <li><a href=""><div class="content_story"><label>그런데 이번엔 경쟁자가 있다? 탐정단 앞에 나타난 진짜 천재 참정단. </label></div></a></li>
-        </ul>
-    </div>
-    <br>
-    <hr class="my-hr">
-    <br>
-
 </section>
 
 
