@@ -23,6 +23,9 @@ module.exports = function(app){
     app.get('/wishListPage', user.wishListPage);
     app.get('/content_ex', user.contentImage);
 
+    // 설문조사 페이지
+    app.get('/surveyPage', user.surveyPage);
+
     // 2. 로그인 페이지 HTML
     app.get('/loginicon',user.getLogin);
     app.get('/logouticon',user.getLogout);

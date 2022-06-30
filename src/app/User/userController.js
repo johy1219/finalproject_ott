@@ -92,6 +92,11 @@ exports.signUpPage = async function (req, res) {
     return res.sendFile(path.join(__dirname,'../../../view/signUp.html'));
 }
 
+// 설문조사 페이지
+exports.surveyPage = async function (req, res) {
+    return res.sendFile(path.join(__dirname,'../../../view/contents_survey.html'));
+}
+
 // /** API No. 4 [POST]유저 생성 (회원가입) API **/
 exports.postUsers = async function (req, res) {
 

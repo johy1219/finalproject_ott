@@ -1,50 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-    function signUp(){
-        var userId = $("#userid").val()
-        var password = $("#password").val()
-        var userName = $("#userName").val()
-        var userAge = $("#userAge").val()
-        var userSex = document.getElementsByTagName('input');
-        var value;
-        for (var i = 0; i < userSex.length; i++) {
-            if (userSex[i].type === 'radio' && userSex[i].checked) {
-                // get value, set checked flag or do whatever you need to
-                value = userSex[i].value;
-            }
-        }
-        var userNum = $("#userNum").val()
-        var userEmail = $("#userEmail").val()
-        var ajax = $.ajax({
-            url: "/users",
-            data: (
-                {"userId" : userId , "password" : password , "userName" : userName,
-                    "userAge" : userAge , "userSex" : value, "userNum" : userNum,
-                    "userEmail" : userEmail}
-            ),
-            type: 'POST',
-            dataType : 'JSON',
-            success: function(response) {
-                // alert("완료");
-                // location.replace('/');
-                if(response.isSuccess == true) {
-                    alert("완료");
-                    location.replace('/');
-                }
-                else {
-                    // alert("실패");
-                    // location.replace('/');
-                }
-            }
-        });
-    }
-    function main(){
-        location.replace('/');
-    }
-    function getGender(event) {
-        document.getElementById('result').innerText =
-            event.target.value;
-    }
+
 </script>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
@@ -228,16 +184,32 @@
         color: #166cea;
     }
 
-    .btn-area{margin-top: 30px;}
-    .btn-area button
+    .btn-area
+    {
+        margin-top: 30px;
+    }
+    .btn-area .btn-b
     {
         cursor: pointer;
-        width: 100%;
+        width: 45%;
         height: 50px;
         background: #166cea;
         color: #fff;
         font-size: 15px;
-        /*font-weight: bold;*/
+        font-weight: bold;
+        border:none;
+        border-radius: 25px;
+    }
+    .btn-area .btn-w
+    {
+        cursor: pointer;
+        width: 45%;
+        height: 50px;
+        background: #fff;
+        color: #166cea;
+        margin-right: 35px;
+        font-size: 15px;
+        font-weight: bold;
         border:none;
         border-radius: 25px;
     }
@@ -255,30 +227,35 @@
 </nav>
 <section class="signup-form">
     <form action="">
-        <div class="mainpage" onclick="location.replace('/');">메인페이지</div>
+<!--        <div class="mainpage" onclick="location.replace('/');">건너뛰기</div>-->
+        <label>최근에 재밌게 봤던 콘텐츠를 골라주세요</label>
         <div class="int-area">
             <input type="text" id="userid" name="userid" autocomplete="off" required>
             <label for="userid">기타</label></br>
         </div>
+
+        <label>가장 좋아하는 콘텐츠를 골라주세요</label>
         <div class="int-area">
             <input type="password" id="password" name="password" autocomplete="off" required>
             <label for="password">기타</label></br>
         </div>
+
+        <label>즐겨보는 장르를 골라주세요</label>
         <div class="int-area">
             <input type="text" id="userName" name="userName" autocomplete="off" required>
             <label for="userName">기타</label></br>
         </div>
+
+        <label>관심있는 연예인을 골라주세요</label>
         <div class="int-area">
             <input type="text" id="userAge" name="userAge" autocomplete="off" required>
             <label for="userAge">기타</label></br>
         </div>
+
+        <label>최근에 재밌게 봤던 콘텐츠를 골라주세요</label>
         <div class="int-area">
             <input type="text" id="userEmail" name="userEmail" autocomplete="off" required>
             <label for="userEmail">기타</label></br>
-        </div>
-
-        <div class="btn-area">
-            <button type="submit" id="btn" onclick="signUp()" >SIGN UP</button>
         </div>
     </form>
 </section>
