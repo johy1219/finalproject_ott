@@ -1,19 +1,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-    // var currentMenu;
-    // var menuLinks = document.querySelectorAll('.genre_btn');
-    // function color_change(){
-    //     var activeMenu = document.querySelector('.genre_btn_active');  /* querySelector 자체가 dom을 다 뒤져야 되므로 이것도 비효율적이라고 할 수 ㅇ..dom에 의존적 */
-    //     if (activeMenu){
-    //         activeMenu.classList.remove('genre_btn_active');
-    //     }
-    //
-    //     document.querySelector('.genre_btn').classList.add("genre_btn_active");
-    //
-    // }
-    // for (var i = 0; i < menuLinks.length; i++){
-    //     menuLinks[i].addEventListener('click', color_change);
-    // }
+
+    function color_change(el){
+        alert(el.value);
+        el.classList.add("genre_btn_active");
+    }
+
 
 
 </script>
@@ -281,7 +273,7 @@
         border-radius: 25px;
     }
 
-    .genre_btn:focus
+    .genre_btn_active
     {
         background: #166cea;
         color: #fff;
@@ -350,25 +342,30 @@
 
     <div class="survey-content">
         <label class="question">좋아하는 장르는 무엇인가요?</label><br>
-        <button type="submit" class="genre_btn" onclick="color_change()">액션</button>
-        <button type="submit" class="genre_btn" onclick="color_change()">코미디</button>
-        <button type="submit" class="genre_btn" onclick="color_change()">다큐멘터리</button>
-        <button type="submit" class="genre_btn" onclick="color_change()">판타지</button>
-        <button type="submit" class="genre_btn" onclick="color_change()">공포</button>
-        <button type="submit" class="genre_btn" onclick="color_change()">음악</button>
-        <button type="submit" class="genre_btn" onclick="color_change()">로맨스</button>
-        <button type="submit" class="genre_btn" onclick="color_change()">스포츠</button>
-        <button type="submit" class="genre_btn" onclick="color_change()">서부</button>
-        <button type="submit" class="genre_btn2" onclick="color_change()">Made in Europe</button>
-        <button type="submit" class="genre_btn" onclick="color_change()">애니메이션</button>
-        <button type="submit" class="genre_btn" onclick="color_change()">범죄</button>
-        <button type="submit" class="genre_btn" onclick="color_change()">드라마</button>
-        <button type="submit" class="genre_btn" onclick="color_change()">역사</button>
-        <button type="submit" class="genre_btn" onclick="color_change()">가족</button>
-        <button type="submit" class="genre_btn" onclick="color_change()">스릴러</button>
-        <button type="submit" class="genre_btn" onclick="color_change()">SF</button>
-        <button type="submit" class="genre_btn" onclick="color_change()">전쟁</button>
-        <button type="submit" class="genre_btn" onclick="color_change()">Reality TV</button>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="액션"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="코미디"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="다큐멘터리"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="판타지"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="공포"/>
+<!--        <button type="submit" class="genre_btn" onclick="color_change()">액션</button>-->
+<!--        <button type="submit" class="genre_btn" onclick="color_change()">코미디</button>-->
+<!--        <button type="submit" class="genre_btn" onclick="color_change()">다큐멘터리</button>-->
+<!--        <button type="submit" class="genre_btn" onclick="color_change()">판타지</button>-->
+<!--        <button type="submit" class="genre_btn" onclick="color_change()">공포</button>-->
+<!--        <button type="submit" class="genre_btn" onclick="color_change()">음악</button>-->
+<!--        <button type="submit" class="genre_btn" onclick="color_change()">로맨스</button>-->
+<!--        <button type="submit" class="genre_btn" onclick="color_change()">스포츠</button>-->
+<!--        <button type="submit" class="genre_btn" onclick="color_change()">서부</button>-->
+<!--        <button type="submit" class="genre_btn2" onclick="color_change()">Made in Europe</button>-->
+<!--        <button type="submit" class="genre_btn" onclick="color_change()">애니메이션</button>-->
+<!--        <button type="submit" class="genre_btn" onclick="color_change()">범죄</button>-->
+<!--        <button type="submit" class="genre_btn" onclick="color_change()">드라마</button>-->
+<!--        <button type="submit" class="genre_btn" onclick="color_change()">역사</button>-->
+<!--        <button type="submit" class="genre_btn" onclick="color_change()">가족</button>-->
+<!--        <button type="submit" class="genre_btn" onclick="color_change()">스릴러</button>-->
+<!--        <button type="submit" class="genre_btn" onclick="color_change()">SF</button>-->
+<!--        <button type="submit" class="genre_btn" onclick="color_change()">전쟁</button>-->
+<!--        <button type="submit" class="genre_btn" onclick="color_change()">Reality TV</button>-->
     </div>
 
     <div class="survey-content"  style="margin-top: 30px;">
