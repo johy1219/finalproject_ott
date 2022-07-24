@@ -1,12 +1,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
+    var element = document.getElementsByClassName('genre_btn');
 
     function color_change(el){
+
         alert(el.value);
-        el.classList.add("genre_btn_active");
+        el.classList.toggle("genre_btn_active");
     }
 
+    function init() {
+        for (var i = 0; i < element.length; i++) {
+            element[i].addEventListener("click", color_change);
+        }
+    }
 
+    init();
 
 </script>
 <style>
@@ -347,35 +355,30 @@
         <input type="button" class="genre_btn" onclick="color_change(this)" value="다큐멘터리"/>
         <input type="button" class="genre_btn" onclick="color_change(this)" value="판타지"/>
         <input type="button" class="genre_btn" onclick="color_change(this)" value="공포"/>
-<!--        <button type="submit" class="genre_btn" onclick="color_change()">액션</button>-->
-<!--        <button type="submit" class="genre_btn" onclick="color_change()">코미디</button>-->
-<!--        <button type="submit" class="genre_btn" onclick="color_change()">다큐멘터리</button>-->
-<!--        <button type="submit" class="genre_btn" onclick="color_change()">판타지</button>-->
-<!--        <button type="submit" class="genre_btn" onclick="color_change()">공포</button>-->
-<!--        <button type="submit" class="genre_btn" onclick="color_change()">음악</button>-->
-<!--        <button type="submit" class="genre_btn" onclick="color_change()">로맨스</button>-->
-<!--        <button type="submit" class="genre_btn" onclick="color_change()">스포츠</button>-->
-<!--        <button type="submit" class="genre_btn" onclick="color_change()">서부</button>-->
-<!--        <button type="submit" class="genre_btn2" onclick="color_change()">Made in Europe</button>-->
-<!--        <button type="submit" class="genre_btn" onclick="color_change()">애니메이션</button>-->
-<!--        <button type="submit" class="genre_btn" onclick="color_change()">범죄</button>-->
-<!--        <button type="submit" class="genre_btn" onclick="color_change()">드라마</button>-->
-<!--        <button type="submit" class="genre_btn" onclick="color_change()">역사</button>-->
-<!--        <button type="submit" class="genre_btn" onclick="color_change()">가족</button>-->
-<!--        <button type="submit" class="genre_btn" onclick="color_change()">스릴러</button>-->
-<!--        <button type="submit" class="genre_btn" onclick="color_change()">SF</button>-->
-<!--        <button type="submit" class="genre_btn" onclick="color_change()">전쟁</button>-->
-<!--        <button type="submit" class="genre_btn" onclick="color_change()">Reality TV</button>-->
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="음악"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="로맨스"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="스포츠"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="서부"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="유럽"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="애니메이션"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="범죄"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="드라마"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="역사"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="가족"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="스릴러"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="SF"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="전쟁"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="Reality TV"/>
     </div>
 
     <div class="survey-content"  style="margin-top: 30px;">
         <label class="question">계정이 있는 플랫폼은 무엇인가요?</label><br>
-        <button type="submit" class="genre_btn">Watcha</button>
-        <button type="submit" class="genre_btn">Netflix</button>
-        <button type="submit" class="genre_btn">WAVVE</button>
-        <button type="submit" class="genre_btn">Disney Plus</button>
-        <button type="submit" class="genre_btn">Tving</button>
-        <button type="submit" class="genre_btn">Seezn</button>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="WATCHA"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="NETFLIX"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="WAVVE"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="Disney Plus"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="TVING"/>
+        <input type="button" class="genre_btn" onclick="color_change(this)" value="Seezn"/>
     </div>
 
 </section>
