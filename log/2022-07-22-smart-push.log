@@ -1,0 +1,6 @@
+{"level":"info","message":"development - API Server Start At Port 3000","timestamp":"2022-07-22 02:42:41"}
+{"level":"error","message":"App - createUser Service error\n: Incorrect integer value: '' for column 'userAge' at row 1","timestamp":"2022-07-22 02:47:24"}
+{"level":"info","message":"development - API Server Start At Port 3000","timestamp":"2022-07-22 05:42:36"}
+{"level":"info","message":"development - API Server Start At Port 3000","timestamp":"2022-07-22 07:27:34"}
+{"level":"info","message":"development - API Server Start At Port 3000","timestamp":"2022-07-22 07:57:19"}
+{"level":"info","message":"development - API Server Start At Port 3000","timestamp":"2022-07-22 16:10:08"}
